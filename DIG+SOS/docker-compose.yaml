@@ -5,7 +5,7 @@ services:
 
     build:
       context: ./images
-      dockerfile: dockerfile
+      dockerfile: Dockerfile_php
     ports:
       - "8080:80"
     volumes:
@@ -13,16 +13,17 @@ services:
     depends_on:
       - db
 
-  # Database
+  
 
 
   db:
 
-    image: mysql:8.0
+    image: mysql:9.3
 
     volumes:
 
       - ./db_data:/var/lib/mysql
+      - ./db_init:/docker-entrypoint-initdb.d
 
     restart: always
 
@@ -37,6 +38,14 @@ services:
       MYSQL_PASSWORD: ProjecteFinal_12345.
 
       LANG: C.UTF-8
+  
+  adminer: 
+    image: adminer
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+
 
 
 
