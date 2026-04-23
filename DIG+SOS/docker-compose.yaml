@@ -39,7 +39,7 @@ services:
 
       LANG: C.UTF-8
   
-  adminer: 
+  adminer:
     image: adminer
     ports:
       - "8081:8080"
