@@ -14,20 +14,23 @@ FLUSH PRIVILEGES;
 USE persones;
 
 
-CREATE TABLE cases (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
 
 CREATE TABLE incidencies (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    departament_nom VARCHAR2(20) NOT NULL,
+    departament_nom VARCHAR2(50) NOT NULL,
     data_incidencia SYSDATE,
-    descripcio VARCHAR2(50)
+    prioritat VARCHAR2(10),
+    descripcio VARCHAR2(255)
 );
 
 CREATE TABLE actuacio (
+    actuacio_id INT AUTO_INCREMENT PRIMARY KEY,
     descripcio VARCHAR2(25)
+);
+
+CREATE TABLE departament(
+    departament_id INT PRIMARY KEY,
+    departament_nom VARCHAR2(20)
 );
 
 -- Afegim algunes dades inicials a la taula cases
