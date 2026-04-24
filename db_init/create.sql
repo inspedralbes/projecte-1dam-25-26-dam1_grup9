@@ -25,12 +25,19 @@ CREATE TABLE incidencies (
 
 CREATE TABLE actuacio (
     actuacio_id INT AUTO_INCREMENT PRIMARY KEY,
-    descripcio VARCHAR2(25)
+    descripcio VARCHAR2(25),
+    visible BOOLEAN
 );
 
 CREATE TABLE departament(
     departament_id INT PRIMARY KEY,
     departament_nom VARCHAR2(20)
+);
+
+CREATE TABLE tecnics(
+    dni INT PRIMARY KEY,
+    nom VARCHAR2(25),
+    cognom VARCHAR2(25)
 );
 
 -- Afegim algunes dades inicials a la taula cases
