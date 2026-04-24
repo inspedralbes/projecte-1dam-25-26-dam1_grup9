@@ -33,4 +33,4 @@ if (!$videojuego) {
         </form>
     </div>
 </div>
-<?php include_once "pie.php"; ?>
+<?php ?>

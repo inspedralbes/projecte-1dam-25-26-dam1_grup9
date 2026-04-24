@@ -1,4 +1,4 @@
-<?php include_once " "; ?>
+<?php  ?>
 <div class="row">
     <div class="col-12">
         <h1>Detall de l'incidencia</h1>
@@ -11,4 +11,4 @@
         </form>
     </div>
 </div>
-<?php include_once " "; ?>
+<?php?>
