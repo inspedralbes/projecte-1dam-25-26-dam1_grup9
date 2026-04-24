@@ -40,7 +40,6 @@ CREATE TABLE tecnics(
     cognom VARCHAR2(25)
 );
 
--- Afegim algunes dades inicials a la taula cases
-INSERT INTO cases (name) VALUES ('Casa Milà');
-INSERT INTO cases (name) VALUES ('Casa Batlló');
-INSERT INTO cases (name) VALUES ('Casa Gaudí');
+CREATE TABLE acces(
+    acces_id INT AUTO_INCREMENT PRIMARY KEY
+);
