@@ -4,7 +4,7 @@ services:
   web:
 
     build:
-      context: ./images
+      context: ../images
       dockerfile: Dockerfile_php
     ports:
       - "8080:80"
