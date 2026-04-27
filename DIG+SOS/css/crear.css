@@ -1,0 +1,26 @@
+ .botones {
+    background: linear-gradient(135deg, #0648c4be, #25117e);
+    color: white;
+    padding: 15px 35px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: arial;
+    border-radius: 10px;
+    letter-spacing: 2px;  
+    padding: 15px 30px; 
+    }
+.botones:hover{
+    transform: scale(1.1);
+}
+.h1{
+   font-family: Arial;
+   letter-spacing: 0px;  
+   padding: 15px;
+}
+.cuerpo{
+    font-family: arial;
+    font-size: 15px;
+    padding: 15px;
+    
+    
+}
