@@ -3,7 +3,7 @@
 <style>
     <?php 
     
-    echo file_get_contents("../css/estado.css"); 
+    echo file_get_contents("../css/consumo.css"); 
     ?>
 </style>
         
@@ -40,10 +40,9 @@
         
         <br>
         <br>
-        
+
          <div >
-            <a href="index.php" class="botones">Sortir sense guardar</a>     
-            <button type="submit" class="botones">Enviar Incidència</button>
+            <a href="index.php" class="botones">Sortir</a>     
         </div>
 
         <?php
