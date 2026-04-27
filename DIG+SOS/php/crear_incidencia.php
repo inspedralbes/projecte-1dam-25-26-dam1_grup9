@@ -1,3 +1,5 @@
+<?php
+$mysqli = include_once "connexio.php" ?>
 <?php include_once "header.php";  ?>
 
 <style>
@@ -25,11 +27,11 @@
            
             <label for="departament_id">Departament</label>
                     <select name="tipus" id="tipus" class="form-control" required>
-                            <option value="">Selecciona una opció...</option>
-                            <option value="info">Informàtica </option>
-                            <option value="fisica">Fisica</option>
-                            <option value="mates">Mates</option>
-                            <option value="profe">Profesores</option>
+                            <option value="">Selecciona el id del teu departament</option>
+                            <option value="1">1 </option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
                     </select>
         <br>
         <br>
@@ -41,7 +43,7 @@
         <br>
 
             <label for="data" >Titol de l'incidència</label>
-                <input type="text" placeholder="Un titol curta" riquired>
+                <input type="text" placeholder="Un titol curta" required>
 
         <br>
         <br>
