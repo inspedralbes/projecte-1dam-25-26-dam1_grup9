@@ -5,10 +5,12 @@ table {
     }
     table, th, td {
         border: 1px solid black; 
+        font-family: arial;
     }
     th, td {
         padding: 10px;
         text-align: center;
+        font-family: arial;
 }
 .h1{
    font-family: Arial;
