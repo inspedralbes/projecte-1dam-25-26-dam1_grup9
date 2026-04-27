@@ -30,10 +30,12 @@ CREATE TABLE departament(
 
 CREATE TABLE incidencies (
      id INT AUTO_INCREMENT PRIMARY KEY,
+     nom_incidencia VARCHAR(50) NOT NULL,
      departament_id INT,
      data_incidencia TIMESTAMP,
      prioritat VARCHAR(10),
      descripcio VARCHAR(255),
+     estat VARCHAR(10),
      FOREIGN KEY(departament_id)REFERENCES departament(departament_id)
 );
 
