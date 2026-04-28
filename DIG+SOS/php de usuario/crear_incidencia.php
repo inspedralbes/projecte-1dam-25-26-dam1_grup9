@@ -16,15 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     crear_incidencia($mysqli);
 }else{
 ?>
-    <style>
-        <?php
-            echo file_get_contents("../css/crear.css"); 
-        ?>
-    </style>
-
-
-
-        
+<style>
+    <?php
+        echo file_get_contents("../css/crear.css"); 
+    ?>
+</style>
+<!DOCTYPE html>
+<html>
     <h2 class="h1">Nova Incidència</h2>
         <form action="incidencies.php" method="POST">    
                
@@ -78,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
 
     </form>
+</html>
 <?php
 }
 ?>
