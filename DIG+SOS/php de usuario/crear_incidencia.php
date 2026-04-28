@@ -23,9 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 </style>
 <!DOCTYPE html>
 <html>
+    <body>
     <h2 class="h1">Nova Incidència</h2>
-        <form action="incidencies.php" method="POST">    
-               
+        <form action="incidencies.php" method="POST">     
          <div class="cuerpo">
             <label for="tipus">Tipus d'incidència</label>
                 <select name="tipus_incidencia" id="tipus" class="form-control" required>
@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
 
     </form>
+</body>
 </html>
 <?php
 }
