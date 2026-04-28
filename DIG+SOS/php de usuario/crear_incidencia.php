@@ -13,7 +13,7 @@
                
          <div class="cuerpo">
             <label for="tipus">Tipus d'incidència</label>
-                <select name="tipus" id="tipus" class="form-control" required>
+                <select name="tipus_incidencia" id="tipus" class="form-control" required>
                         <option value="">Selecciona una opció...</option>
                         <option value="hardware">Hardware </option>
                         <option value="software">Software</option>
