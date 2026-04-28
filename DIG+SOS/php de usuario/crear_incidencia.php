@@ -24,7 +24,7 @@
         <br>
            
             <label for="departament_id">Departament</label>
-                    <select name="tipus" id="tipus" class="form-control" required>
+                    <select name="departament_id" id="departament_id" class="form-control" required>
                             <option value="">Selecciona el id del teu departament</option>
                             <option value="1">1 </option>
                             <option value="2">2</option>
