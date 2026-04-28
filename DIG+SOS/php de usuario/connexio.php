@@ -1,5 +1,5 @@
 <?php
-$host = "127.0.0.1";
+$host = "localhost";
 $usuari = "admin";
 $contrasenia = "ProjecteFinal_12345.";
 $base_de_dades = "db";

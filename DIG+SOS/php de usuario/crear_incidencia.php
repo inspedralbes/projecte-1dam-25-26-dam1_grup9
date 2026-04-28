@@ -1,14 +1,31 @@
 <?php include_once "header.php";  ?>
+<?php require_once 'connexio.php';
 
-<style>
-    <?php 
-    
-    echo file_get_contents("../css/crear.css"); 
-    ?>
-</style>
+function crear_incidencia($mysqli)
+{
+    $nom = $_POST["nom_incidencia"];
+    $departament_id = $_POST["departament_id"];
+    $descripcio = $_POST["descripcio"];
+    $sentencia = $mysqli->prepare("INSERT INTO Incidencies (nom_incidencia, departament_id, descripcio) VALUES (?, ?, ?)");
+    $sentencia->bind_param("sis", $nom, $departament_id, $descripcio);
+    $sentencia->execute();
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    crear_incidencia($mysqli);
+}else{
+?>
+    <style>
+        <?php
+            echo file_get_contents("../css/crear.css"); 
+        ?>
+    </style>
+
+
+
         
     <h2 class="h1">Nova Incidència</h2>
-            
         <form action="incidencies.php" method="POST">    
                
          <div class="cuerpo">
@@ -61,6 +78,6 @@
         </div>
 
     </form>
-
-
-<?php  ?>
+<?php
+}
+?>
