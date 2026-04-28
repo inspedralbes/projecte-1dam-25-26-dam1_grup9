@@ -1,5 +1,3 @@
-<?php
-$mysqli = include_once "connexio.php" ?>
 <?php include_once "header.php";  ?>
 
 <style>
@@ -42,7 +40,7 @@ $mysqli = include_once "connexio.php" ?>
         <br>
         <br>
 
-            <label for="data" >Titol de l'incidència</label>
+            <label for="nom_incidencia" >Titol de l'incidència</label>
                 <input type="text" placeholder="Un titol curta" required>
 
         <br>
