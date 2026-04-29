@@ -1,5 +1,6 @@
 <?php include_once "header.php";  ?>
-<?php require_once 'connexio.php';
+<?php 
+require_once 'connexio.php';
 
 function crear_incidencia($mysqli)
 {
@@ -25,7 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <html>
     <body>
     <h2 class="h1">Nova Incidència</h2>
-        <form action="incidencies.php" method="POST">     
+        require_once 'connexio.php';
+<form action="incidencies.php" method="POST">     
          <div class="cuerpo">
             <label for="tipus">Tipus d'incidència</label>
                 <select name="tipus_incidencia" id="tipus" class="form-control" required>
