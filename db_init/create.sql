@@ -48,3 +48,14 @@ CREATE TABLE tecnics(
 CREATE TABLE acces(
     acces_id INT AUTO_INCREMENT PRIMARY KEY
 );
+
+INSERT INTO departament (departament_id, departament_nom)
+VALUES(1, 'Matematiques');
+INSERT INTO departament (departament_id, departament_nom)
+VALUES(2, 'Informatica');
+INSERT INTO departament (departament_id, departament_nom)
+VALUES(3, 'Historia');
+INSERT INTO departament (departament_id, departament_nom)
+VALUES(4, 'Llengua');
+INSERT INTO departament (departament_id, departament_nom)
+VALUES(5, 'Ciencies');
