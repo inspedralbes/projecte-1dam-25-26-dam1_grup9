@@ -1,20 +1,26 @@
-<?php include_once "header.php";  ?>
-<?php 
-require_once 'connexio.php';
+<?php include_once "header.php";
+require_once "connexio.php";
 
-function crear_incidencia($mysqli)
+function crear_incidencia($conn)
 {
-    $nom = $_POST["nom_incidencia"];
+    //$nom = $_POST["nom_incidencia"];
     $departament_id = $_POST["departament_id"];
     $descripcio = $_POST["descripcio"];
-    $sentencia = $mysqli->prepare("INSERT INTO Incidencies (nom_incidencia, departament_id, descripcio) VALUES (?, ?, ?)");
-    $sentencia->bind_param("sis", $nom, $departament_id, $descripcio);
-    $sentencia->execute();
+    $sentencia = $conn->prepare("INSERT INTO incidencies (departament_id, descripcio) VALUES ( ?, ?)");
+    $sentencia->bind_param("is", $departament_id, $descripcio);
+      if ($sentencia->execute()) {
+        echo "<p class='info'>Incidencia creada amb èxit!</p>";
+    } else {
+        echo "<p class='error'>Error al crear la teva incidencia: " . htmlspecialchars($sentencia->error) . "</p>";
+    }
+
+    // Tancar la declaració i la connexió
+    $sentencia->close();
 }
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    crear_incidencia($mysqli);
+    crear_incidencia($conn);
 }else{
 ?>
 <style>
@@ -26,8 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <html>
     <body>
     <h2 class="h1">Nova Incidència</h2>
-        require_once 'connexio.php';
-<form action="incidencies.php" method="POST">     
+<form action="crear_incidencia.php" method="POST">     
          <div class="cuerpo">
             <label for="tipus">Tipus d'incidència</label>
                 <select name="tipus_incidencia" id="tipus" class="form-control" required>
@@ -57,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         <br>
         <br>
 
-            <label for="nom_incidencia" >Titol de l'incidència</label>
-                <input type="text" placeholder="Un titol curta" required>
+           <!--<label for="nom_incidencia" >Titol de l'incidència</label>
+                <input type="text" placeholder="Un titol curta" required> -->
 
         <br>
         <br>
