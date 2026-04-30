@@ -33,33 +33,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <h2 class="h1">Nova Incidència</h2>
 <form action="crear_incidencia.php" method="POST">     
          <div class="cuerpo">
-            <label for="tipus">Tipus d'incidència</label>
-                <select name="tipus_incidencia" id="tipus" class="form-control" required>
-                        <option value="">Selecciona una opció...</option>
-                        <option value="hardware">Hardware </option>
-                        <option value="software">Software</option>
-                        <option value="xarxa">Xarxa i Internet</option>
-                        <option value="altres">Altres</option>
-                </select>
-        <br>
-        <br>
            
             <label for="departament_id">Departament</label>
                     <select name="departament_id" id="departament_id" class="form-control" required>
                             <option value="">Selecciona el id del teu departament</option>
-                            <option value="1">1 </option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            <option value="1">Matematiques</option>
+                            <option value="2">Informatica</option>
+                            <option value="3">Historia</option>
+                            <option value="4">LLengua</option>
+                            <option value="5">Ciencies</option>
                     </select>
         <br>
         <br>
         
             <label for="data" >Data i Hora de registre</label>
                 <input type="text"  name="data" id="data"  value="<?php echo date('d-m-Y H:i'); ?>"  readonly>
-                    
-        <br>
-        <br>
 
            <!--<label for="nom_incidencia" >Titol de l'incidència</label>
                 <input type="text" placeholder="Un titol curta" required> -->
