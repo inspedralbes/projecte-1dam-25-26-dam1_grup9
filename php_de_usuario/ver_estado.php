@@ -4,15 +4,15 @@ require_once "connexio.php";
 $result = $conn->query("SELECT * FROM incidencies");
 $Incidencies = $result -> fetch_all(MYSQLI_ASSOC);?>
 
-
-<style>
-    <?php 
-    
-    echo file_get_contents("../css/estado.css"); 
-    ?>
-</style>
-        
-    <h2 class="h1">Estat de l'incidència</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 >Estat de l'incidència</h2>
         
         <table>
             <thead>
@@ -29,17 +29,17 @@ $Incidencies = $result -> fetch_all(MYSQLI_ASSOC);?>
             </thead>
             <tbody>
                 <?php
-                foreach ($Incidencies as $Incidencia) { ?>
+                foreach ($Incidencies as $in) { ?>
                     <tr>
                         <td> 
-                            <?php echo $Incidencia["id"] ?>
+                            <?php echo $in["id"] ?>
                         </td>
                         <td><?php //echo $Incidencies["nom_incidencia"] ?></td>
-                        <td><?php echo $Incidencia["departament_id"] ?></td>
-                        <td><?php echo $Incidencia["data_incidencia"] ?></td>
-                        <td><?php echo $Incidencia["prioritat"] ?></td>
-                        <td><?php echo $Incidencia["descripcio"] ?></td>
-                        <td><?php echo $Incidencia["estat"] ?></td>
+                        <td><?php echo $in["departament_id"] ?></td>
+                        <td><?php echo $in["data_incidencia"] ?></td>
+                        <td><?php echo $in["prioritat"] ?></td>
+                        <td><?php echo $in["descripcio"] ?></td>
+                        <td><?php echo $in["estat"] ?></td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -52,7 +52,9 @@ $Incidencies = $result -> fetch_all(MYSQLI_ASSOC);?>
             <a href="index.php" class="botones">Sortir</a>     
         </div>
 
-        <?php
-
+        
+</body>
+</html>        
+    
 
 
