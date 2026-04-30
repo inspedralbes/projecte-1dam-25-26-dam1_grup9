@@ -23,11 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     crear_incidencia($conn);
 }else{
 ?>
-<style>
-    <?php
-        echo file_get_contents("../css/crear.css"); 
-    ?>
-</style>
+
 <!DOCTYPE html>
 <html>
     <body>
