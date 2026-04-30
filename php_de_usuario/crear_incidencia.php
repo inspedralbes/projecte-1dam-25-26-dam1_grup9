@@ -9,9 +9,9 @@ function crear_incidencia($conn)
     $sentencia = $conn->prepare("INSERT INTO incidencies (departament_id, descripcio) VALUES ( ?, ?)");
     $sentencia->bind_param("is", $departament_id, $descripcio);
       if ($sentencia->execute()) {
-        echo "<p class='info'>Incidencia creada amb èxit!</p>";
+        echo "<h1 style='text-align:center;' class='info'>Incidencia creada amb èxit!</h1>";
         ?>
-            <a href="index.php">Retornar</a>
+            <a href="index.php" class="botones">Retornar</a>
         <?php
     } else {
         echo "<p class='error'>Error al crear la teva incidencia: " . htmlspecialchars($sentencia->error) . "</p>";
@@ -36,11 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
            
             <label for="departament_id">Departament</label>
                     <select name="departament_id" id="departament_id" class="form-control" required>
-                            <option value="">Selecciona el id del teu departament</option>
+                            <option value="">Selecciona el teu departament</option>
                             <option value="1">Matematiques</option>
                             <option value="2">Informatica</option>
                             <option value="3">Historia</option>
-                            <option value="4">LLengua</option>
+                            <option value="4">Llengua</option>
                             <option value="5">Ciencies</option>
                     </select>
         <br>
