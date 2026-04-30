@@ -30,7 +30,7 @@ CREATE TABLE departament(
 
 CREATE TABLE incidencies (
      id INT AUTO_INCREMENT PRIMARY KEY,
-     nom_incidencia VARCHAR(50) NOT NULL,
+     nom_incidencia VARCHAR(50),
      departament_id INT,
      data_incidencia TIMESTAMP,
      prioritat VARCHAR(10),
