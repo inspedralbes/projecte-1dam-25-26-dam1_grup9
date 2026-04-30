@@ -10,6 +10,9 @@ function crear_incidencia($conn)
     $sentencia->bind_param("is", $departament_id, $descripcio);
       if ($sentencia->execute()) {
         echo "<p class='info'>Incidencia creada amb èxit!</p>";
+        ?>
+            <a href="index.php">Retornar</a>
+        <?php
     } else {
         echo "<p class='error'>Error al crear la teva incidencia: " . htmlspecialchars($sentencia->error) . "</p>";
     }

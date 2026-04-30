@@ -1,9 +1,14 @@
-<?php include_once "header.php";  ?>
+<?php include_once "header.php";  
+require_once "connexio.php";
+
+$result = $conn->query("SELECT * FROM incidencies");
+$Incidencies = $result -> fetch_all(MYSQLI_ASSOC);?>
+
 
 <style>
     <?php 
     
-    echo file_get_contents("../css/consumo.css"); 
+    echo file_get_contents("../css/estado.css"); 
     ?>
 </style>
         
@@ -13,7 +18,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>TITOL D'INDIDÈNCIA</th>
+                    <!--<th>TITOL D'INDIDÈNCIA</th> -->
                     <th>DEPARTAMENT</th>
                     <th>DATA DE CREACIÓ</th>
                     <th>PRIORITAT</th>
@@ -24,15 +29,17 @@
             </thead>
             <tbody>
                 <?php
-                foreach ($Incidencies as $Incidencies) { ?>
+                foreach ($Incidencies as $Incidencia) { ?>
                     <tr>
-                        <td><?php echo $Incidencies["id"] ?></td>
-                        <td><?php echo $Incidencies["nom_incidencia"] ?></td>
-                        <td><?php echo $Incidencies["departament_id"] ?></td>
-                        <td><?php echo $Incidencies["data_incidencia"] ?></td>
-                        <td><?php echo $Incidencies["prioritat"] ?></td>
-                        <td><?php echo $Incidencies["descripcio"] ?></td>
-                        <td><?php echo $Incidencies["estat"] ?></td>
+                        <td> 
+                            <?php echo $Incidencia["id"] ?>
+                        </td>
+                        <td><?php //echo $Incidencies["nom_incidencia"] ?></td>
+                        <td><?php echo $Incidencia["departament_id"] ?></td>
+                        <td><?php echo $Incidencia["data_incidencia"] ?></td>
+                        <td><?php echo $Incidencia["prioritat"] ?></td>
+                        <td><?php echo $Incidencia["descripcio"] ?></td>
+                        <td><?php echo $Incidencia["estat"] ?></td>
                     </tr>
                 <?php } ?>
             </tbody>
