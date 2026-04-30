@@ -45,8 +45,9 @@ CREATE TABLE tecnics(
     cognom VARCHAR(25)
 );
 
-CREATE TABLE acces(
-    acces_id INT AUTO_INCREMENT PRIMARY KEY
+CREATE TABLE tipologia(
+    tipologia_id INT PRIMARY KEY,
+    tipologia_nom VARCHAR(50)
 );
 
 INSERT INTO departament (departament_id, departament_nom)
