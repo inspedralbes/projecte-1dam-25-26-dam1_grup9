@@ -17,11 +17,7 @@ USE Incidencies;
 
 
 
-CREATE TABLE actuacio (
-    actuacio_id INT AUTO_INCREMENT PRIMARY KEY,
-    descripcio VARCHAR(25),
-    visible BOOLEAN
-);
+
 
 CREATE TABLE departament(
     departament_id INT PRIMARY KEY,
