@@ -1,3 +1,4 @@
+
 SET NAMES utf8mb4;
 
 CREATE DATABASE IF NOT EXISTS Incidencies
@@ -24,8 +25,10 @@ CREATE TABLE departament(
     departament_nom VARCHAR(50)
 );
 
+
 CREATE TABLE incidencies (
      id INT AUTO_INCREMENT PRIMARY KEY,
+     nom_incidencia VARCHAR(50),
      departament_id INT,
      data_incidencia DATETIME,
      prioritat VARCHAR(10),
