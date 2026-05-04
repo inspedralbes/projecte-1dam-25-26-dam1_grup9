@@ -3,11 +3,12 @@ require_once "connexio.php";
 
 function crear_incidencia($conn)
 {
-    //$nom = $_POST["nom_incidencia"];
     $departament_id = $_POST["departament_id"];
     $descripcio = $_POST["descripcio"];
-    $sentencia = $conn->prepare("INSERT INTO incidencies (departament_id, descripcio) VALUES ( ?, ?)");
-    $sentencia->bind_param("is", $departament_id, $descripcio);
+    $estat = $_POST["estat"];
+    $data = date["Y-m-d H:i:s"];
+    $sentencia = $conn->prepare("INSERT INTO incidencies (departament_id, descripcio, data_incidencia, estat) VALUES ( ?, ?, ?, ?)");
+    $sentencia->bind_param("isss", $departament_id, $descripcio, $data, $estat);
       if ($sentencia->execute()) {
         echo "<h1 style='text-align:center;' class='info'>Incidencia creada amb èxit!</h1>";
         ?>
@@ -46,8 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         <br>
         <br>
         
-            <label for="data" >Data i Hora de registre</label>
-                <input type="text"  name="data" id="data"  value="<?php echo date('d-m-Y H:i'); ?>"  readonly>
+            
+            <input type="hidden"  name="data_incidencia" id="data_incidencia"  value="<?php echo date('d/m/y'); ?>"  readonly>
 
            <!--<label for="nom_incidencia" >Titol de l'incidència</label>
                 <input type="text" placeholder="Un titol curta" required> -->
@@ -62,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     
 
         <br>
-               
+        <input type="hidden" name="estat" value="En revisio">     
         <div >
             <a href="index.php" class="botones">Sortir sense guardar</a>
                     

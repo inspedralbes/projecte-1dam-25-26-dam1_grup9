@@ -34,8 +34,7 @@ $Incidencies = $result -> fetch_all(MYSQLI_ASSOC);?>
                         <td> 
                             <?php echo $in["id"] ?>
                         </td>
-                        <td><?php //echo $Incidencies["nom_incidencia"] ?></td>
-                        <td><?php echo $in["departament_id"] ?></td>
+                        <td><?php echo $in["departament_nom"] ?></td>
                         <td><?php echo $in["data_incidencia"] ?></td>
                         <td><?php echo $in["prioritat"] ?></td>
                         <td><?php echo $in["descripcio"] ?></td>
