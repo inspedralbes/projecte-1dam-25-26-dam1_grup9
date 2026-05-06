@@ -24,11 +24,14 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
         th, td {
             border: 1px solid black;
             padding: 10px;
+            font-family: Arial;
+            text-align: center;
         }
 
         th {
             background-color: #2b5de7;
             color: white;
+            font-family: Arial;
         }
 
         .botones {
@@ -41,6 +44,7 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
 
         .botones:hover {
             background: #54a7df;
+            
         }
 
         .inicio {
@@ -49,6 +53,7 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
             background-color: #2d59e9;
             border: none;
             color: white;
+            font-family: Arial;
         }
 
         .inicio:hover {
