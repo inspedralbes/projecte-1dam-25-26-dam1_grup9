@@ -1,7 +1,7 @@
 <?php  
 require_once "connexion.php";
 
-$id = intval($_GET["codi"]);
+$id = intval($_GET['codi']) ?? null;
 $result = $conn->query("SELECT data_actuacio, descripcio, visible FROM actuacions Where incidencia_id = $id");
 
 $actuacions = $result->fetch_all(MYSQLI_ASSOC);
