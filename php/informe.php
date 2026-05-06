@@ -47,10 +47,14 @@ foreach ($data as $row) {
     th, td {
         border: 1px solid black;
         padding: 8px;
+        text-align: center;
+        font family: Arial;
     }
 
     th {
         background: #7779f0;
+        color: white;
+        font-family: Arial;
     }
     .botones {
         padding: 10px 20px;
@@ -87,28 +91,38 @@ foreach ($data as $row) {
                     <th>Temps total</th>
                     <th>Prioritat</th>
                 </tr>
-            
+                <?php
+                    $existe = false;
+                    $ordre = ['Alta', 'Mitja', 'Baixa'];
 
-                <?php if (!empty($prioritats[''])): ?>
-                    <?php foreach ($prioritats['Alta','Mitja','Baixa'] as $i): ?>
-                        <tr>
-                            <td>#<?= $i['incidencia'] ?></td>
-                            <td><?= $i['data_obertura'] ?></td>
-                            <td><?= $i['temps_total'] ?> min</td>
-                            <td><?= $i['prioritat'] ?> min</td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
+                    $color = ['Alta' => '#ff1100', 'Mitja' => '#ff9900', 'Baixa' => '#4caf50'];
+
+                    foreach ($ordre as $prioritat_ordenat) {
+                    
+                    if (isset($prioritats[$prioritat_ordenat])) {
+                        foreach ($prioritats[$prioritat_ordenat] as $i) {
+                            $existe = true; ?>
+                            <tr>
+                                <td>#<?= $i['incidencia'] ?></td>
+                                <td><?= $i['data_obertura'] ?></td>
+                                <td><?= $i['temps_total'] ?> min</td>
+                                <td style="background-color: <?= $color[$i['prioritat']] ?>;"><?= $i['prioritat'] ?></td>
+                            </tr>
+                        <?php }
+                    }
+                }
+
+                if (!$existe): ?>
                     <tr>
-                        <td colspan="4">Sense incidències</td>
+                        <td colspan="4">No hi ha incidències obertes</td>
                     </tr>
                 <?php endif; ?>
 
             </table>
 
-       
+            
 
-    <?php endforeach; ?>
+            <?php endforeach; ?>
 
 </div>
 <br>
