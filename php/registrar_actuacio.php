@@ -55,130 +55,140 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
 <title>Registrar actuació</title>
 
 <style>
-body {
-    font-family: Arial;
-   
-}
+    header {
+                background: linear-gradient(to right, #23e2c2, #6a8bf0);
+                color: white;
+                padding: 20px;
+                font-family: Arial;
+                text-align: center;
+    }
+    body {
+        font-family: Arial;
+    
+    }
 
-table {
-    width: 95%;
-    border-collapse: collapse;
-}
+    table {
+        width: 95%;
+        border-collapse: collapse;
+    }
 
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-}
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
 
-th {
-    background: #8270e7;
-}
+    th {
+        background: #8270e7;
+        color : white;
+    }
 
-textarea {
-    width: 50%;
-    margin: 5px;
-}
+    textarea {
+        width: 50%;
+        margin: 5px;
+    }
 
-.botones {
-    padding: 10px 15px;
-    background: #8270e7;
-    border: none;
-    cursor: pointer;
-}
+    .botones {
+        padding: 10px 15px;
+        background: #8270e7;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+    }
 
-.botones:hover {
-    background: #a27ee7;
-}
-
-
+    .botones:hover {
+        background: #a27ee7;
+    }
+    fieldset {
+        margin: 20px;
+        padding: 20px ;
+        border: 2px solid #000000;
+        border-radius: 5px;
+        
+    }
+    .uno{
+        display: flex;
+        
+    }
 
 </style>
 </head>
 
 <body>
 
-<div>
+<header>
+    <h1>Registrar actuació - Incidència <span style="color: black;"># <?= $id ?></span></h1>
+</header>
+<fieldset>
 
-<h2>Registrar actuació - Incidència #<?= $id ?></h2>
+    <h2>Historial d’actuacions</h2>
 
+        <table>
+            <tr>
+                <th>Data</th>
+                <th>Descripció</th>
+                <th>Temps</th>
+                <th>Visible</th>
+            </tr>
 
-<div >
-
-<h3>Historial d’actuacions</h3>
-
-<table>
-<tr>
-    <th>Data</th>
-    <th>Descripció</th>
-    <th>Temps</th>
-    <th>Visible</th>
-</tr>
-
-<?php if (count($actuacions) > 0): ?>
-    <?php foreach ($actuacions as $a): ?>
+    <?php if (count($actuacions) > 0): ?>
+        <?php foreach ($actuacions as $a): ?>
+            <tr>
+                <td><?= $a['data_actuacio'] ?></td>
+                <td><?= htmlspecialchars($a['descripcio']) ?></td>
+                <td><?= $a['temps'] ?> min</td>
+                <td><?= $a['visible'] ? "Sí" : "No" ?></td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
         <tr>
-            <td><?= $a['data_actuacio'] ?></td>
-            <td><?= htmlspecialchars($a['descripcio']) ?></td>
-            <td><?= $a['temps'] ?> min</td>
-            <td><?= $a['visible'] ? "Sí" : "No" ?></td>
+            <td colspan="4">No hi ha actuacions</td>
         </tr>
-    <?php endforeach; ?>
-<?php else: ?>
-    <tr>
-        <td colspan="4">No hi ha actuacions</td>
-    </tr>
-<?php endif; ?>
+    <?php endif; ?>
 
-</table>
+        </table>
+</fieldset>
 
+
+<div class="uno">
+<fieldset style="padding-right: 25%;">
+
+    <h3>Nova actuació</h3>
+
+        <form method="POST">
+            <textarea name="descripcio" placeholder="Descripció" required></textarea><br>
+            <input type="number" name="temps" placeholder="Temps (minuts)" required><br>
+            <br>
+            <input type="checkbox" name="visible" checked> Visible 
+            <br>
+
+            <button class="botones" name="guardar">Afegir actuació</button>
+
+        </form>
+
+</fieldset>
+
+
+<fieldset style="padding-right: 25%;">
+
+    <h3>Finalitzar incidència</h3>
+
+        <form method="POST">
+
+            <b>Data finalització:</b>
+            <input type="date" name="data_final" required>
+            <br>
+            <br>
+            <button class="botones" name="tancar">Tancar incidència</button>
+        
+        </form>
+</fieldset>
 </div>
+    <br>
 
-
-<div>
-
-<h3>Nova actuació</h3>
-
-<form method="POST">
-
-<textarea name="descripcio" placeholder="Descripció" required></textarea><br>
-
-<input type="number" name="temps" placeholder="Temps (minuts)" required><br>
-
-<br>
-
-<input type="checkbox" name="visible" checked> Visible 
-
-
-<br><br>
-
-<button class="botones" name="guardar">Afegir actuació</button>
-
-</form>
-
-</div>
-
-
-<div >
-
-<h3>Finalitzar incidència</h3>
-
-<form method="POST">
-
-Data finalització:
-<input type="date" name="data_final" required>
-
-<br><br>
-
-<button class="botones" name="tancar">
-Tancar incidència
-</button>
-
-</form>
-
-</div>
-    <a href="lista_actuacio.php" class="botones" style="margin-top: 20px; display: inline-block;">
+    <a href="lista_actuacio.php" class="botones" >
         Cancelar
-</div>
+    </a>
 
 </body>
 </html>

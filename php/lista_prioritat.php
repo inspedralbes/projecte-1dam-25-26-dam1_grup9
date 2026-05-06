@@ -12,8 +12,13 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
     <title>Incidències no resoltes</title>
 
     <style>
-      
-
+        header {
+            background: linear-gradient(to right, #23e2c2, #6a8bf0);
+            color: white;
+            padding: 20px;
+            font-family: Arial;
+            text-align: center;
+        }
         table {
             
             border-collapse: collapse;
@@ -66,8 +71,10 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
 
 <div class="box">
 
-    <h2>Incidències NO resoltes</h2>
-
+    <header>
+        <h1>Incidències no resoltes</h1>
+    </header>
+    <br>
     <table>
         <tr>
             <th>ID</th>

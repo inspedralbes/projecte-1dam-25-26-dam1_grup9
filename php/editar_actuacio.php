@@ -1,15 +1,13 @@
 <?php
-// CONNEXIÓ BD
 require_once "connexion.php";
 
 $id = $_GET['id'] ?? null;
 
-// Si no hi ha ID
+
 if (!$id) {
     die("No s'ha especificat cap incidència.");
 }
 
-// GUARDAR CANVIS
 if (isset($_POST['guardar'])) {
 
     $tecnic = $_POST['tecnic'];
@@ -23,7 +21,7 @@ if (isset($_POST['guardar'])) {
 
     if ($stmt->execute([$tecnic, $prioritat, $tipus, $id])) {
             echo "<p style='color:green;text-align:center;'>Dades actualitzades correctament</p>";
-            echo "<p style='text-align:center;'><a href='index.php' class='botones'>Salir</a></p>";
+            echo "<p style='text-align:center;'><a href='lista_prioritat.php' class='botones'>Salir</a></p>";
         } else {
             echo "<p style='color:red;text-align:center;'>Error al actualitzar les dades de la incidència</p>";
         }
@@ -48,22 +46,25 @@ $inc = $res_inc->fetch_assoc();
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Editar incidència</title>
 
     <style>
     
-
-        select, button {
+        select{
+            padding: 5px 10px;
+        }
+         button {
             padding: 8px;
             margin: 10px;
-            width: 80%;
+            width: 50%;
         }
 
 
         .botones {
             background: #2c51f1;
             border: none;
-            cursor: pointer;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
         }
 
         .botones:hover {
@@ -131,16 +132,12 @@ $inc = $res_inc->fetch_assoc();
                 <input type="radio" name="tipus" value="Altres"
                 <?= ($inc['tipus'] == "Altres") ? "checked" : "" ?>>
                 Altres
-                
             </label>   
-            
-           
-
-        <button class="botones" type="submit" name="guardar" >
-            Guardar canvis
-        </button>
-
     </form>
+    <br>
+    <button class="botones" type="submit" name="guardar" >
+        Guardar canvis
+    </button>
 
 </div>
 

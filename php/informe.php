@@ -35,7 +35,17 @@ foreach ($data as $row) {
 <title>Informe de Tècnics</title>
 
 <style>
-   
+    header {
+        text-align: center;
+        padding: 10px 20px;
+        background: linear-gradient(90deg, #4b6cb7, #182848);
+        color: white;
+        font-size : 24px;
+    }
+    h3 {
+        margin-top: 30px;
+        font-family: Arial;
+    }
 
     table {
         
@@ -48,7 +58,7 @@ foreach ($data as $row) {
         border: 1px solid black;
         padding: 8px;
         text-align: center;
-        font family: Arial;
+        font-family: Arial;
     }
 
     th {
@@ -61,6 +71,8 @@ foreach ($data as $row) {
         background-color: #2d59e9;
         text-decoration: none;
         color: white;
+        font-family: Arial;
+        
     }
     .botones:hover {
         background-color: #55a5da;
@@ -73,15 +85,17 @@ foreach ($data as $row) {
 
 <div >
 
-    <h2>Informe de Tècnics</h2>
-    
+    <header>
+        <h2>Informe</h2>
+    </header>
+
      <?php if (empty($result)): ?>
         <p>No hi ha incidències obertes actualment.</p>
     <?php endif; ?>
 
     <?php foreach ($result as $tecnic => $prioritats): ?>
 
-        <h3>TÈCNIC: <?= htmlspecialchars($tecnic) ?></h3>
+        <h3>TÈCNIC ENCARREGAT: <span style="color: #2a04ff ;"><?= htmlspecialchars($tecnic) ?></span></h3>
 
        
             <table>
