@@ -81,10 +81,17 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
         background: #8270e7;
         color : white;
     }
+    input{
+        padding: 8px;  
+        border: 1px solid #000000;
+    }
 
     textarea {
-        width: 50%;
-        margin: 5px;
+        width: 200%;
+        padding: 10px;
+        height: 50px;
+        margin: 10px 0px;
+        border: 1px solid #000000;
     }
 
     .botones {
@@ -109,6 +116,10 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
     .uno{
         display: flex;
         
+    }
+    button {
+        font-family: Arial;
+        font-size: 16px;
     }
 
 </style>
@@ -162,7 +173,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
             <input type="checkbox" name="visible" checked> Visible 
             <br>
 
-            <button class="botones" name="guardar">Afegir actuació</button>
+            <button class="botones" name="guardar"><b>Afegir actuació</b></button>
 
         </form>
 
@@ -175,7 +186,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
 
         <form method="POST">
 
-            <b>Data finalització:</b>
+            <b>Data finalització: <br></b>
             <input type="date" name="data_final" required>
             <br>
             <br>
