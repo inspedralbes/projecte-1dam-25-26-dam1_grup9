@@ -21,15 +21,15 @@ CREATE TABLE departament (
 );
 
 CREATE TABLE tecnics (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    tecnic_id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL
 );
 
 
 CREATE TABLE incidencies (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    incidencia_id INT AUTO_INCREMENT PRIMARY KEY,
 
-    departament VARCHAR(100) NOT NULL,
+    departament_nom VARCHAR(100) NOT NULL,
 
     data_obertura DATETIME NOT NULL,
 
@@ -56,7 +56,7 @@ CREATE TABLE incidencies (
 
 
 CREATE TABLE actuacions (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    actuacions_id INT AUTO_INCREMENT PRIMARY KEY,
 
     incidencia_id INT NOT NULL,
 
@@ -77,7 +77,7 @@ CREATE TABLE actuacions (
 );
 
 CREATE TABLE accessos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    accesos_id INT AUTO_INCREMENT PRIMARY KEY,
     usuari VARCHAR(50),
     pagina VARCHAR(50),
     data DATE
