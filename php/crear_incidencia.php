@@ -3,7 +3,7 @@ require_once "connexion.php";
 
 function crear_incidencia($conn)
 {
-    $departamento = $_POST['departament'];
+    $departamento = $_POST['departament_nom'];
     $descripcion = $_POST['descripcio'];
     $data= date('Y-m-d H:i:s');
 
@@ -12,7 +12,7 @@ function crear_incidencia($conn)
         return;
     }
 
-    $sql = "INSERT INTO incidencies (departament, descripcio, data_obertura) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO incidencies (departament_nom, descripcio, data_obertura) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $departamento, $descripcion, $data);
 
@@ -90,13 +90,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form action="crear_incidencia.php" method="post">
 
         <label>Departament:</label>
-        <select name="departament" required>
+        <select name="departament_nom" required>
             <option value="">Seleccionar departament</option>
-            <option value="1">Matematiques</option>
-            <option value="2">Informatica</option>
-            <option value="3">Historia</option>
-            <option value="4">Llengua</option>
-            <option value="5">Ciencies</option>
+            <option value="Matematiques">Matematiques</option>
+            <option value="Informatica">Informatica</option>
+            <option value="Historia">Historia</option>
+            <option value="Llengua">Llengua</option>
+            <option value="Ciencies">Ciencies</option>
         </select>
 
 
