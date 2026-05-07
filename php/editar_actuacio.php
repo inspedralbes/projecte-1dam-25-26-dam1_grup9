@@ -48,7 +48,13 @@ $inc = $res_inc->fetch_assoc();
     <meta charset="UTF-8">
 
     <style>
-    
+        header {
+                background: linear-gradient(to right, #23e2c2, #6a8bf0);
+                color: white;
+                padding: 20px;
+                font-family: Arial;
+                text-align: center;
+        }
         select{
             padding: 5px 10px;
         }
@@ -75,14 +81,17 @@ $inc = $res_inc->fetch_assoc();
 
 <body>
 
+<header>
+    <h1>Editar incidència <span style="color: black;"># <?= $id ?></span></h1>
+</header>
+
 <div >
 
-    <h2>Editar incidència #<?= $id ?></h2>
 
     <form method="POST">
 
         
-        <p>Tècnic assignat:</p>
+        <p><b>Tècnic assignat:</b></p>
         <select name="tecnic" required>
             <option value="">-- Seleccionar tècnic --</option>
             <?php foreach ($tecnics as $t): ?>
@@ -94,7 +103,7 @@ $inc = $res_inc->fetch_assoc();
         </select>
 
        
-        <p>Prioritat:</p>
+        <p><b>Prioritat:</b></p>
         <div>
             <label>
                 <input type="radio" name="prioritat" value="Alta"
@@ -116,8 +125,8 @@ $inc = $res_inc->fetch_assoc();
         </div>
 
         <br>
-        <!-- TIPUS -->
-        <p>Tipus d'incidència:</p>
+    
+        <p><b>Tipus d'incidència:</b></p>
         <div >
             <label >
                 <input type="radio" name="tipus" value="Software"
