@@ -34,13 +34,18 @@ if (isset($_POST['tancar'])) {
     ");
 
     $stmt->execute([$data_final, $id]);
+
+     $stmt2 = $conn->prepare("UPDATE actuacions SET visible = 0 WHERE incidencia_id = ?");
+    $stmt2->bind_param("i", $id);
+    $stmt2->execute();
 }
 
 
-$stmt = $conn->prepare(" SELECT data_actuacio, descripcio, temps, visible
-    FROM actuacions
-    WHERE incidencia_id = ?
-    ORDER BY data_actuacio ASC
+$stmt = $conn->prepare("SELECT a.data_actuacio, a.descripcio, a.temps, a.visible, i.data_tancament
+    FROM actuacions a
+    INNER JOIN incidencies i ON a.incidencia_id = i.id
+    WHERE a.incidencia_id = ?
+    ORDER BY a.data_actuacio ASC
 ");
 
 $stmt->execute([$id]);
@@ -87,7 +92,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
     }
 
     textarea {
-        width: 200%;
+        width: 150%;
         padding: 10px;
         height: 50px;
         margin: 10px 0px;
@@ -140,6 +145,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
                 <th>Descripció</th>
                 <th>Temps</th>
                 <th>Visible</th>
+                <th>Data de la finalització</th>
             </tr>
 
     <?php if (count($actuacions) > 0): ?>
@@ -149,6 +155,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
                 <td><?= htmlspecialchars($a['descripcio']) ?></td>
                 <td><?= $a['temps'] ?> min</td>
                 <td><?= $a['visible'] ? "Sí" : "No" ?></td>
+                <td><?= $a['data_tancament'] ?? "No especificada" ?></td>
             </tr>
         <?php endforeach; ?>
     <?php else: ?>
@@ -172,7 +179,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
             <br>
             <input type="checkbox" name="visible" checked> Visible 
             <br>
-
+            <br>
             <button class="botones" name="guardar"><b>Afegir actuació</b></button>
 
         </form>
@@ -182,7 +189,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
 
 <fieldset style="padding-right: 25%;">
 
-    <h3>Finalitzar incidència</h3>
+    <h3>Finalització de la incidència</h3>
 
         <form method="POST">
 
@@ -190,7 +197,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
             <input type="date" name="data_final" required>
             <br>
             <br>
-            <button class="botones" name="tancar">Tancar incidència</button>
+            <button class="botones" name="tancar"><b>Tancar incidència</b></button>
         
         </form>
 </fieldset>
