@@ -35,6 +35,13 @@ function crear_incidencia($conn)
     <title>Nova Incidència</title>
 
     <style>
+        header {
+            background: linear-gradient(to right, #23e2c2, #6a8bf0);
+            color: white;
+            padding: 20px;
+            font-family: Arial;
+            text-align: center;
+        }
         body {
             display: flex;
             font-family: Arial;

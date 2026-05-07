@@ -35,17 +35,17 @@ if (isset($_POST['tancar'])) {
 
     $stmt->execute([$data_final, $id]);
 
-     $stmt2 = $conn->prepare("UPDATE actuacions SET visible = 0 WHERE incidencia_id = ?");
-    $stmt2->bind_param("i", $id);
-    $stmt2->execute();
 }
 
+$stmtInc = $conn->prepare("SELECT data_tancament FROM incidencies WHERE id = ?");
+$stmtInc->execute([$id]);
+$incidencia = $stmtInc->get_result()->fetch_assoc();
+$data_fi = $incidencia['data_tancament'] ?? null;
 
-$stmt = $conn->prepare("SELECT a.data_actuacio, a.descripcio, a.temps, a.visible, i.data_tancament
-    FROM actuacions a
-    INNER JOIN incidencies i ON a.incidencia_id = i.id
-    WHERE a.incidencia_id = ?
-    ORDER BY a.data_actuacio ASC
+$stmt = $conn->prepare(" SELECT data_actuacio, descripcio, temps, visible
+    FROM actuacions
+    WHERE incidencia_id = ?
+    ORDER BY data_actuacio ASC
 ");
 
 $stmt->execute([$id]);
@@ -141,11 +141,11 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
 
         <table>
             <tr>
-                <th>Data</th>
+                <th>Data de actuació</th>
                 <th>Descripció</th>
                 <th>Temps</th>
                 <th>Visible</th>
-                <th>Data de la finalització</th>
+                <th>Data de la finalització </th>
             </tr>
 
     <?php if (count($actuacions) > 0): ?>
@@ -155,12 +155,16 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
                 <td><?= htmlspecialchars($a['descripcio']) ?></td>
                 <td><?= $a['temps'] ?> min</td>
                 <td><?= $a['visible'] ? "Sí" : "No" ?></td>
-                <td><?= $a['data_tancament'] ?? "No especificada" ?></td>
+                <td><?php if ($data_fi): ?>
+                            <?= $data_fi ?>
+                        <?php else: ?>
+                            <span style="color: grey; font-style: italic;">Pendent de tancament</span>
+                        <?php endif; ?></td>
             </tr>
         <?php endforeach; ?>
     <?php else: ?>
         <tr>
-            <td colspan="4">No hi ha actuacions</td>
+            <td colspan="5">No hi ha actuacions</td>
         </tr>
     <?php endif; ?>
 
