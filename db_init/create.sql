@@ -28,48 +28,28 @@ CREATE TABLE tecnics (
 
 CREATE TABLE incidencies (
     incidencia_id INT AUTO_INCREMENT PRIMARY KEY,
-
     departament_nom VARCHAR(100) NOT NULL,
-
     data_obertura DATETIME NOT NULL,
-
     descripcio TEXT NOT NULL,
-
     tecnic_id INT NULL,
-
     prioritat ENUM('Alta','Mitja','Baixa') NULL,
-
     resolta TINYINT(1) DEFAULT 0,
-
     data_tancament DATETIME NULL,
-
     tipus ENUM('Software','Hardware','Xarxa', 'Altres') NULL,
 
     FOREIGN KEY (tecnic_id) REFERENCES tecnics(id)
         ON UPDATE CASCADE
         ON DELETE SET NULL
-    
-   
-    
-
 );
-
 
 CREATE TABLE actuacions (
     actuacions_id INT AUTO_INCREMENT PRIMARY KEY,
-
     incidencia_id INT NOT NULL,
-
     data_actuacio DATETIME NOT NULL,
-
     descripcio TEXT NOT NULL,
-
-    temps INT NOT NULL COMMENT 'minuts',
-
+    temps INT NOT NULL,
     visible TINYINT(1) DEFAULT 1,
-
     resolta TINYINT(1) DEFAULT 0,
-    
 
     FOREIGN KEY (incidencia_id) REFERENCES incidencies(id)
         ON DELETE CASCADE
@@ -81,8 +61,6 @@ CREATE TABLE accessos (
     usuari VARCHAR(50),
     pagina VARCHAR(50),
     data DATE
-
-
 );
 
 
