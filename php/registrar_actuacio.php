@@ -139,7 +139,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
 </header>
 <fieldset>
 
-    <h2>Historial d’actuacions</h2>
+    <h2>Historial d'actuacions</h2>
 
         <table>
             <tr>
