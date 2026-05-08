@@ -1,4 +1,4 @@
-
+<?php include_once "logger.php"?>
 
 <!DOCTYPE html>
 <html lang="ca">
