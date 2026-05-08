@@ -1,5 +1,7 @@
 <?php
 require_once "connexion.php";
+require_once "logger.php";
+
 
 $id = $_GET['id'] ?? null;
 
