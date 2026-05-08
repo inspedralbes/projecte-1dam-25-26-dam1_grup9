@@ -18,13 +18,17 @@ if (isset($_POST['guardar'])) {
         SET tecnic_id = ?, prioritat = ?, tipus = ?
         WHERE id = ?
     ");
-
-    if ($stmt->execute([$tecnic, $prioritat, $tipus, $id])) {
-            echo "<p style='color:green;text-align:center;'>Dades actualitzades correctament</p>";
-            echo "<p style='text-align:center;'><a href='lista_prioritat.php' class='botones'>Salir</a></p>";
-        } else {
-            echo "<p style='color:red;text-align:center;'>Error al actualitzar les dades de la incidència</p>";
-        }
+    if ($stmt->execute([$tecnic, $prioritat, $tipus, $id])) :?>
+        <div style="margin-top: 25%; color: green; text-align: center;font-family: Arial;">
+           <h1>Dades actualitzades correctament</h1>
+            <p><a href='lista_prioritat.php' style="background: #2c51f1;border: none;color: white;padding: 10px 20px;
+            font-size: 16px;text-decoration: none;border-radius: 5px;font-family: Arial;">Salir</a></p> 
+        </div>
+         
+        <?php else :?>
+            <p class='mensaje'>Error al actualitzar les dades de la incidència</p>
+        <?php endif;
+    
     exit();
 }
 

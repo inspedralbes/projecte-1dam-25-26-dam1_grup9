@@ -44,9 +44,10 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
 
         .botones {
             padding: 10px 20px;
-            background-color: #49c4c9;
+            background-color: #4952ca;
             text-decoration: none;
-            color: black;
+            color: white;
+            border-radius: 5px;
             
         }
 
@@ -66,7 +67,7 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
     <br>
     <div class="form-box">
         <form method="GET" >
-            <p><b>Codi incidència:</b></p>
+            <h3><b>Codi incidència:</b></h3>
             <input type="number" name="codi" value="<?= htmlspecialchars($id ?? '') ?>">
             <button type="submit">Buscar</button>
         </form>

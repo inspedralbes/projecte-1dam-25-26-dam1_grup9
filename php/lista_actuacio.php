@@ -28,7 +28,7 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
         table {
             margin: auto;
             border-collapse: collapse;
-            width: 70%;
+            width: 90%;
             margin-top: 20px;
         }
 
