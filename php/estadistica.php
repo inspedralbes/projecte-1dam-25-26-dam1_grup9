@@ -26,86 +26,104 @@ $usuaris = $conn->query("SELECT usuari, COUNT(*) as total
 </head>
 
 <style>
-body {
-    font-family: Arial;
-   
-}
+    header {
+        background: linear-gradient(to right, #23e2c2, #6a8bf0);
+        color: white;
+        padding: 20px;
+        font-family: Arial;
+        text-align: center;
+    }
+    body {
+        font-family: Arial;
+    
+    }
 
-table {
-    width: 95%;
-    border-collapse: collapse;
-}
+    table {
+        width: 95%;
+        border-collapse: collapse;
+    }
 
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-}
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
 
-th {
-    background: #8270e7;
-}
+    th {
+        background: #8270e7;
+        color: white;
+    }
 
-textarea {
-    width: 50%;
-    margin: 5px;
-}
+    textarea {
+        width: 50%;
+        margin: 5px;
+    }
 
-.botones {
-    padding: 10px 15px;
-    background: #8270e7;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-}
+    .botones {
+        padding: 10px 15px;
+        background: #8270e7;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+    }
 
-.botones:hover {
-    background: #a27ee7;
-}
+    .botones:hover {
+        background: #a27ee7;
+    }
+    .uno {
+       text-align: center;
+    }
+    fieldset {
+        margin: 20px auto;
+        width: 50%;
+        border: 2px solid #fd0707;
+        padding: 2px;
+        border-radius: 5px;
+    }
 </style>
 
 <body>
+    <header>
+        <h1>Estadísticas de acceso en els departaments</h1>
+    </header>
+    <fieldset>
+        <h3 class= "uno">Accesos totales: <?= $total ?></h3>
+    </fieldset>
 
-<h2>Estadísticas de acceso en els departaments</h2>
+    <h3>Páginas más visitadas</h3>
+        <table border="1">
+            <tr>
+                <th>Página</th>
+                <th>Accesos</th>
+            </tr>
+
+            <?php while($p = $pagines->fetch_assoc()): ?>
+            <tr>
+                <td><?= $p['pagina'] ?></td>
+                <td><?= $p['total'] ?></td>
+            </tr>
+            <?php endwhile; ?>
+
+        </table>
 
 
-<p>Accesos totales: <?= $total ?></p>
+    <h3>Usuarios más activos</h3>
+        <table border="1">
+            <tr>
+                <th>Usuario</th>
+                <th>Accesos</th>
+            </tr>
 
-<!-- PÁGINAS -->
-<h3>Páginas más visitadas</h3>
-<table border="1">
-<tr>
-    <th>Página</th>
-    <th>Accesos</th>
-</tr>
+            <?php while($u = $usuaris->fetch_assoc()): ?>
+            <tr>
+                <td><?= $u['usuari'] ?></td>
+                <td><?= $u['total'] ?></td>
+            </tr>
+            <?php endwhile; ?>
 
-<?php while($p = $pagines->fetch_assoc()): ?>
-<tr>
-    <td><?= $p['pagina'] ?></td>
-    <td><?= $p['total'] ?></td>
-</tr>
-<?php endwhile; ?>
+        </table>
 
-</table>
-
-
-<h3>Usuarios más activos</h3>
-<table border="1">
-<tr>
-    <th>Usuario</th>
-    <th>Accesos</th>
-</tr>
-
-<?php while($u = $usuaris->fetch_assoc()): ?>
-<tr>
-    <td><?= $u['usuari'] ?></td>
-    <td><?= $u['total'] ?></td>
-</tr>
-<?php endwhile; ?>
-
-</table>
-
-<a href="index.php" class="botones" style="margin-top: 20px; display: inline-block;">Inicio</a>
+    <a href="index.php" class="botones" style="margin-top: 20px; display: inline-block;">Inicio</a>
 
 </body>
 </html>

@@ -1,7 +1,9 @@
 <?php  
 require_once "connexion.php";
 
-$result = $conn->query("SELECT * FROM incidencies");
+$result = $conn->query("SELECT * FROM incidencies i
+JOIN departament d ON d.id = i.departament_id
+WHERE resolta = 0");
 $incidencies = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
@@ -88,7 +90,7 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
             <?php foreach ($incidencies as $i): ?>
                 <tr>
                     <td><?= $i['id'] ?></td>
-                    <td><?= htmlspecialchars($i['departament']) ?></td>
+                    <td><?= htmlspecialchars($i['departament_nom']) ?></td>
                     <td><?= $i['data_obertura'] ?></td>
                     <td><?= $i['prioritat'] ? $i['prioritat'] : '-' ?></td>
                     <td>

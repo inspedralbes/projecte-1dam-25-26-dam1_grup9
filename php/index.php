@@ -45,11 +45,6 @@
         <button type="submit">Administrador</button>
     </form>
 
-    
-
-
-
-
 </div>
 
 </body>

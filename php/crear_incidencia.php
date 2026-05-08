@@ -3,7 +3,7 @@ require_once "connexion.php";
 
 function crear_incidencia($conn)
 {
-    $departamento = $_POST['departament_nom'];
+    $departamento = $_POST['departament_id'];
     $descripcion = $_POST['descripcio'];
     $data= date('Y-m-d H:i:s');
 
@@ -12,9 +12,9 @@ function crear_incidencia($conn)
         return;
     }
 
-    $sql = "INSERT INTO incidencies (departament_nom, descripcio, data_obertura) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO incidencies (departament_id, descripcio, data_obertura) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $departamento, $descripcion, $data);
+    $stmt->bind_param("iss", $departamento, $descripcion, $data);
 
     if ($stmt->execute()) {
         echo "<p style='color:green;text-align:center;'>Incidència creada correctament</p>";
@@ -97,13 +97,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form action="crear_incidencia.php" method="post">
 
         <label>Departament:</label>
-        <select name="departament_nom" required>
+        <select name="departament_id" required>
             <option value="">Seleccionar departament</option>
-            <option value="Matematiques">Matematiques</option>
-            <option value="Informatica">Informatica</option>
-            <option value="Historia">Historia</option>
-            <option value="Llengua">Llengua</option>
-            <option value="Ciencies">Ciencies</option>
+            <option value="1">Matematiques</option>
+            <option value="2">Informatica</option>
+            <option value="3">Historia</option>
+            <option value="4">Llengua</option>
+            <option value="5">Ciencies</option>
         </select>
 
 
@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <textarea rows="4" name="descripcio"></textarea>
         
         
-        <a href="index.php" class="inicio">Inicio</a>
+        <a href="usuari.php" class="inicio">Inicio</a>
         <button type="submit" class="envio">Enviar incidència</button>
         
         

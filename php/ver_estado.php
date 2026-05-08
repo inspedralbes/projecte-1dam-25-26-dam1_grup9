@@ -14,6 +14,13 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
     <title>Consultar incidència</title>
 
     <style>
+        header {
+            background: linear-gradient(to right, #23e2c2, #6a8bf0);
+            color: white;
+            padding: 20px;
+            font-family: Arial;
+            text-align: center;
+        }
          body {
             font-family: Arial;
             
@@ -32,6 +39,7 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
 
         th {
             background-color: #8270e7;
+            color: white;
         }
 
         .botones {
@@ -51,12 +59,14 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
 <body>
 
 <div class="box">
+    <header>
+        <h1>Consultar incidència</h1>
+    </header>
 
-    <h2>Consultar incidència</h2>
-
+    <br>
     <div class="form-box">
-        <form method="GET">
-            Codi incidència:
+        <form method="GET" >
+            <p><b>Codi incidència:</b></p>
             <input type="number" name="codi" value="<?= htmlspecialchars($id ?? '') ?>">
             <button type="submit">Buscar</button>
         </form>
@@ -91,7 +101,7 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
 
 <br><br>
 <div style="text-align: left;">
-    <a href="index.php" class="botones">Sortir</a>
+    <a href="usuari.php" class="botones">Sortir</a>
 </div>
 
 

@@ -16,7 +16,7 @@ USE Incidencies;
 
 
 CREATE TABLE departament (
-    departament_id INT PRIMARY KEY,
+    id INT PRIMARY KEY,
     departament_nom VARCHAR(100) NOT NULL
 );
 
@@ -28,7 +28,7 @@ CREATE TABLE tecnics (
 
 CREATE TABLE incidencies (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    departament_nom VARCHAR(100) NOT NULL,
+    departament_id INT NOT NULL,
     data_obertura DATETIME NOT NULL,
     descripcio TEXT NOT NULL,
     tecnic_id INT NULL,
@@ -39,7 +39,11 @@ CREATE TABLE incidencies (
 
     FOREIGN KEY (tecnic_id) REFERENCES tecnics(id)
         ON UPDATE CASCADE
-        ON DELETE SET NULL
+        ON DELETE SET NULL,
+    
+    FOREIGN KEY (departament_id) REFERENCES departament(id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
 );
 
 CREATE TABLE actuacions (
@@ -65,15 +69,15 @@ CREATE TABLE accessos (
 
 
 
-INSERT INTO departament (departament_id, departament_nom)
+INSERT INTO departament (id, departament_nom)
 VALUES(1, 'Matematiques');
-INSERT INTO departament (departament_id, departament_nom)
+INSERT INTO departament (id, departament_nom)
 VALUES(2, 'Informatica');
-INSERT INTO departament (departament_id, departament_nom)
+INSERT INTO departament (id, departament_nom)
 VALUES(3, 'Historia');
-INSERT INTO departament (departament_id, departament_nom)
+INSERT INTO departament (id, departament_nom)
 VALUES(4, 'Llengua');
-INSERT INTO departament (departament_id, departament_nom)
+INSERT INTO departament (id, departament_nom)
 VALUES(5, 'Ciencies');
 
 
