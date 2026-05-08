@@ -107,6 +107,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
         cursor: pointer;
         text-decoration: none;
         color: white;
+        border-radius: 5px;
     }
 
     .botones:hover {
