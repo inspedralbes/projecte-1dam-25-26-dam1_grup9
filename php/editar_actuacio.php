@@ -65,9 +65,8 @@ $inc = $res_inc->fetch_assoc();
          button {
             padding: 8px;
             margin: 10px;
-            width: 50%;
+            width: 25%;
         }
-
 
         .botones {
             background: #2c51f1;
@@ -75,6 +74,9 @@ $inc = $res_inc->fetch_assoc();
             color: white;
             padding: 10px 20px;
             font-size: 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: Arial;
         }
 
         .botones:hover {
@@ -110,19 +112,22 @@ $inc = $res_inc->fetch_assoc();
         <p><b>Prioritat:</b></p>
         <div>
             <label>
-                <input type="radio" name="prioritat" value="Alta"
+                <input type="radio" name="prioritat" value="Alta" riquired
                 <?= ($inc['prioritat'] ?? "") == "Alta" ? "checked" : "" ?>>
                 Alta
+
+
+
             </label>
 
             <label>
-                <input type="radio" name="prioritat" value="Mitja"
+                <input type="radio" name="prioritat" value="Mitja" required
                 <?= ($inc['prioritat'] ?? "") == "Mitja" ? "checked" : "" ?>>
                 Mitja
             </label>
 
             <label>
-                <input type="radio" name="prioritat" value="Baixa"
+                <input type="radio" name="prioritat" value="Baixa" required
                 <?= ($inc['prioritat'] ?? "") == "Baixa" ? "checked" : "" ?>>
                 Baixa
             </label>
@@ -133,16 +138,16 @@ $inc = $res_inc->fetch_assoc();
         <p><b>Tipus d'incidència:</b></p>
         <div >
             <label >
-                <input type="radio" name="tipus" value="Software"
+                <input type="radio" name="tipus" value="Software" required
                 <?= ($inc['tipus'] ?? "") == "Software" ? "checked" : "" ?>>
                 Software
-                <input type="radio" name="tipus" value="Hardware"
+                <input type="radio" name="tipus" value="Hardware" required
                 <?= ($inc['tipus'] ?? "") == "Hardware" ? "checked" : "" ?>>
                 Hardware    
-                <input type="radio" name="tipus" value="Xarxa"
+                <input type="radio" name="tipus" value="Xarxa" required
                 <?= ($inc['tipus'] ?? "") == "Xarxa" ? "checked" : "" ?>>
                 Xarxa
-                <input type="radio" name="tipus" value="Altres"
+                <input type="radio" name="tipus" value="Altres" required
                 <?= ($inc['tipus'] ?? "") == "Altres" ? "checked" : "" ?>>
                 Altres
             </label>   
@@ -151,6 +156,8 @@ $inc = $res_inc->fetch_assoc();
     <button class="botones" type="submit" name="guardar" >
         Guardar canvis
     </button>
+        <a href="lista_prioritat.php" class="botones">Salir</a>
+ 
 
 </div>
 
