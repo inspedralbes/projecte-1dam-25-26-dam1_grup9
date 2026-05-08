@@ -1,5 +1,6 @@
 <?php
 require_once "connexion.php";
+include_once "logger.php";
 
 $sql = ("SELECT DISTINCT i.departament_id, d.departament_nom AS departament_nom, (SELECT COUNT(*) FROM incidencies i2 WHERE i2.departament_id = i.departament_id) AS num_incidencies,
 (SELECT COALESCE(SUM(a.temps),0) FROM actuacions a

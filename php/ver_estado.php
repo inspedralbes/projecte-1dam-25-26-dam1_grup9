@@ -1,5 +1,6 @@
 <?php  
 require_once "connexion.php";
+include_once "logger.php";
 
 $id = intval($_GET['codi']?? 0);
 $result = $conn->query("SELECT data_actuacio, descripcio, visible FROM actuacions Where incidencia_id = $id");
