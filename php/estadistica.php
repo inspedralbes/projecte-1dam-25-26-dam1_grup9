@@ -1,7 +1,6 @@
 <?php
-
 require_once "connexion.php";
-
+include_once "logger.php";
 $result = $conn->query("SELECT COUNT(*) as total FROM accessos");
 $row = $result->fetch_assoc();
 $total = $row['total'];

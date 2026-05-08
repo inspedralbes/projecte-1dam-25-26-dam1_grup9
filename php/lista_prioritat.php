@@ -1,5 +1,6 @@
 <?php  
 require_once "connexion.php";
+include_once "logger.php";
 
 $result = $conn->query("SELECT * FROM incidencies i
 JOIN departament d ON d.id = i.departament_id

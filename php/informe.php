@@ -1,5 +1,6 @@
 <?php
 require_once "connexion.php";
+include_once "logger.php";
 
 $sql = ("SELECT t.nom AS tecnic, i.id AS incidencia, i.data_obertura, i.prioritat, COALESCE(SUM(a.temps), 0) AS temps_total
     FROM tecnics t
