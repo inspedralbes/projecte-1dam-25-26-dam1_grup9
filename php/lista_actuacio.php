@@ -2,8 +2,8 @@
 require_once "connexion.php";
 include_once "logger.php";
 
-$result = $conn->query("SELECT * FROM incidencies
-JOIN departament d ON d.id = incidencies.departament_id
+$result = $conn->query("SELECT * FROM incidencies i
+JOIN departament d ON d.id = i.departament_id
 WHERE resolta = 0");
 $incidencies = $result->fetch_all(MYSQLI_ASSOC);
 ?>
@@ -29,7 +29,7 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
         table {
             margin: auto;
             border-collapse: collapse;
-            width: 70%;
+            width: 90%;
             margin-top: 20px;
         }
 

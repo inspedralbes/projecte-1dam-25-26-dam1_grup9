@@ -100,22 +100,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 } else {
 ?>
-    <h2> Registre d'una nova Incidència</h2>
+    <header>
+        <h1>Registrar nova incidència</h1>
+    </header>
 
     <form action="crear_incidencia.php" method="post">
+        <label><h4>Departament:</h4></label>
+            <select name="departament_id" required>
+                <option value="">Seleccionar departament</option>
+                <option value="1">Matematiques</option>
+                <option value="2">Informatica</option>
+                <option value="3">Historia</option>
+                <option value="4">Llengua</option>
+                <option value="5">Ciencies</option>
+            </select>
 
-        <label>Departament:</label>
-        <select name="departament_id" required>
-            <option value="">Seleccionar departament</option>
-            <option value="1">Matematiques</option>
-            <option value="2">Informatica</option>
-            <option value="3">Historia</option>
-            <option value="4">Llengua</option>
-            <option value="5">Ciencies</option>
-        </select>
 
-
-        <label>Descripció:</label>
+        <label><h4>Descripció:</h4></label>
         <textarea rows="4" name="descripcio"></textarea>
         
         

@@ -59,15 +59,16 @@ $usuaris = $conn->query("SELECT usuari, COUNT(*) as total
 
     .botones {
         padding: 10px 15px;
-        background: #8270e7;
+        background: #4327e2;
         border: none;
         cursor: pointer;
         text-decoration: none;
         color: white;
+        border-radius: 5px;
     }
 
     .botones:hover {
-        background: #a27ee7;
+        background: #7ae6dd;
     }
     .uno {
        text-align: center;
@@ -75,7 +76,7 @@ $usuaris = $conn->query("SELECT usuari, COUNT(*) as total
     fieldset {
         margin: 20px auto;
         width: 50%;
-        border: 2px solid #fd0707;
+        border: 5px solid #fd0707;
         padding: 2px;
         border-radius: 5px;
     }

@@ -26,6 +26,13 @@ if ($resultat) {
 <title>Consum per Departaments</title>
 
 <style>
+    header {
+        text-align: center;
+        padding: 10px 20px;
+        background: linear-gradient(90deg, #4b6cb7, #182848);
+        color: white;
+        font-size : 24px;
+    }
     body {
     font-family: Arial;
                
@@ -44,7 +51,8 @@ if ($resultat) {
     }
 
     th {
-        background: #7ba3fa;
+        background: #2d63d8;
+        color: white;
     }
     .inicio {
             text-decoration: none;
@@ -52,6 +60,7 @@ if ($resultat) {
             background-color: #6f71eb;
             border: none;
             color: white;
+            border-radius: 5px;
         }
 
         .inicio:hover {
@@ -63,13 +72,15 @@ if ($resultat) {
 <body>
 
 <div>
-
-    <h2>Consum per Departaments</h2>
+    <header>
+        <h2>Consum per Departaments</h2>
+    </header>
+        
 
     <table>
         <tr>
             <th>Departament</th>
-            <th>Nº incidències</th>
+            <th>Nombre total d'incidències</th>
             <th>Temps total</th>
         </tr>
 
