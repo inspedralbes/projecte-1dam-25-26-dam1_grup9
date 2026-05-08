@@ -18,18 +18,19 @@ if (isset($_POST['guardar'])) {
         SET tecnic_id = ?, prioritat = ?, tipus = ?
         WHERE id = ?
     ");
+
     if ($stmt->execute([$tecnic, $prioritat, $tipus, $id])) :?>
         <div style="margin-top: 25%; color: green; text-align: center;font-family: Arial;">
            <h1>Dades actualitzades correctament</h1>
             <p><a href='lista_prioritat.php' style="background: #2c51f1;border: none;color: white;padding: 10px 20px;
             font-size: 16px;text-decoration: none;border-radius: 5px;font-family: Arial;">Salir</a></p> 
-        </div>
-         
-        <?php else :?>
+        </div>    
+        <?php
+        else :?>
             <p class='mensaje'>Error al actualitzar les dades de la incidència</p>
         <?php endif;
-    
     exit();
+    
 }
 
 
@@ -38,8 +39,8 @@ $tecnics = $res_tec->fetch_all(MYSQLI_ASSOC);
 
 
 $stmt = $conn->prepare("SELECT * FROM incidencies WHERE id = ?");
-
-$stmt->execute([$id]);
+$stmt->bind_param("i", $id);
+$stmt->execute();
 $res_inc = $stmt->get_result();
 $inc = $res_inc->fetch_assoc();
 
@@ -112,7 +113,7 @@ $inc = $res_inc->fetch_assoc();
         <p><b>Prioritat:</b></p>
         <div>
             <label>
-                <input type="radio" name="prioritat" value="Alta" riquired
+                <input type="radio" name="prioritat" value="Alta" required
                 <?= ($inc['prioritat'] ?? "") == "Alta" ? "checked" : "" ?>>
                 Alta
 
@@ -150,13 +151,15 @@ $inc = $res_inc->fetch_assoc();
                 <input type="radio" name="tipus" value="Altres" required
                 <?= ($inc['tipus'] ?? "") == "Altres" ? "checked" : "" ?>>
                 Altres
-            </label>   
-    </form>
-    <br>
+            </label> 
+            
+        <br>
     <button class="botones" type="submit" name="guardar" >
         Guardar canvis
     </button>
-        <a href="lista_prioritat.php" class="botones">Salir</a>
+        <a href="lista_prioritat.php" class="botones">Salir</a>    
+    </form>
+    
  
 
 </div>
