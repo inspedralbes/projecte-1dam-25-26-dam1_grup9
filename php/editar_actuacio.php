@@ -97,10 +97,10 @@ $inc = $res_inc->fetch_assoc();
         
         <p><b>Tècnic assignat:</b></p>
         <select name="tecnic" required>
-            <option value="">-- Seleccionar tècnic --</option>
+            <option value="">Seleccionar tècnic</option>
             <?php foreach ($tecnics as $t): ?>
                 <option value="<?= $t['id'] ?>"
-                    <?= ($inc['tecnic_id'] == $t['id']) ? 'selected' : '' ?>>
+                    <?= ($inc['tecnic_id'] ?? "") == $t['id'] ? 'selected' : '' ?>>
                     <?= htmlspecialchars($t['nom']) ?>
                 </option>
             <?php endforeach; ?>
@@ -111,19 +111,19 @@ $inc = $res_inc->fetch_assoc();
         <div>
             <label>
                 <input type="radio" name="prioritat" value="Alta"
-                <?= ($inc['prioritat'] == "Alta") ? "checked" : "" ?>>
+                <?= ($inc['prioritat'] ?? "") == "Alta" ? "checked" : "" ?>>
                 Alta
             </label>
 
             <label>
                 <input type="radio" name="prioritat" value="Mitja"
-                <?= ($inc['prioritat'] == "Mitja") ? "checked" : "" ?>>
+                <?= ($inc['prioritat'] ?? "") == "Mitja" ? "checked" : "" ?>>
                 Mitja
             </label>
 
             <label>
                 <input type="radio" name="prioritat" value="Baixa"
-                <?= ($inc['prioritat'] == "Baixa") ? "checked" : "" ?>>
+                <?= ($inc['prioritat'] ?? "") == "Baixa" ? "checked" : "" ?>>
                 Baixa
             </label>
         </div>
@@ -134,16 +134,16 @@ $inc = $res_inc->fetch_assoc();
         <div >
             <label >
                 <input type="radio" name="tipus" value="Software"
-                <?= ($inc['tipus'] == "Software") ? "checked" : "" ?>>
+                <?= ($inc['tipus'] ?? "") == "Software" ? "checked" : "" ?>>
                 Software
                 <input type="radio" name="tipus" value="Hardware"
-                <?= ($inc['tipus'] == "Hardware") ? "checked" : "" ?>>
+                <?= ($inc['tipus'] ?? "") == "Hardware" ? "checked" : "" ?>>
                 Hardware    
                 <input type="radio" name="tipus" value="Xarxa"
-                <?= ($inc['tipus'] == "Xarxa") ? "checked" : "" ?>>
+                <?= ($inc['tipus'] ?? "") == "Xarxa" ? "checked" : "" ?>>
                 Xarxa
                 <input type="radio" name="tipus" value="Altres"
-                <?= ($inc['tipus'] == "Altres") ? "checked" : "" ?>>
+                <?= ($inc['tipus'] ?? "") == "Altres" ? "checked" : "" ?>>
                 Altres
             </label>   
     </form>
