@@ -16,17 +16,20 @@ function crear_incidencia($conn)
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("iss", $departamento, $descripcion, $data);
 
-    if ($stmt->execute()) {
-        echo "<p style='color:green;text-align:center;'>Incidència creada correctament</p>";
-        echo "<p style='text-align:center;'><a href='index.php' class='inicio'>Salir</a></p>";
-    } else {
-        echo "<p style='color:red;text-align:center;'>Error al crear incidència</p>";
-    }
+    if ($stmt->execute()) :?>
+        <div class="mensaje">
+           <h1>Incidència creada correctament</h1>
+           <h2><u>ID de la incidència:  <?php echo $conn->insert_id; ?></u></h2>
+            <p><a href='index.php' class='inicio'>Salir</a></p> 
+        </div>
+         
+        <?php else :?>
+            <p class='mensaje'>Error al crear incidència</p>
+        <?php endif;
 
-    $stmt->close();
+        $stmt->close();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -35,6 +38,12 @@ function crear_incidencia($conn)
     <title>Nova Incidència</title>
 
     <style>
+        .mensaje {
+            margin-top: 25%;
+            color: green;
+            text-align: center;
+            
+        }
         header {
             background: linear-gradient(to right, #23e2c2, #6a8bf0);
             color: white;
@@ -43,9 +52,7 @@ function crear_incidencia($conn)
             text-align: center;
         }
         body {
-            display: flex;
             font-family: Arial;
-            
         }
 
         input, select, textarea {
@@ -67,7 +74,8 @@ function crear_incidencia($conn)
             text-decoration: none;
             padding: 10px 20px;
             background-color: #6285e7;
-            color: black;
+            color: white;
+            border-radius: 5px;
         }
         .envio {
             background-color: #e7b75e;

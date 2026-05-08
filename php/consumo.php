@@ -1,10 +1,11 @@
 <?php
 require_once "connexion.php";
 
-$sql = ("SELECT DISTINCT i.departament_id, (SELECT COUNT(*) FROM incidencies i2 WHERE i2.departament_id = i.departament_id) AS num_incidencies,
+$sql = ("SELECT DISTINCT i.departament_id, d.departament_nom AS departament_nom, (SELECT COUNT(*) FROM incidencies i2 WHERE i2.departament_id = i.departament_id) AS num_incidencies,
 (SELECT COALESCE(SUM(a.temps),0) FROM actuacions a
 JOIN incidencies i3 ON i3.id = a.incidencia_id WHERE i3.departament_id = i.departament_id) AS temps_total
 FROM incidencies i
+JOIN departament d ON d.id = i.departament_id
 ORDER BY i.departament_id
 ");
 
@@ -74,7 +75,7 @@ if ($resultat) {
         <?php if (count($data) > 0): ?>
             <?php foreach ($data as $d): ?>
                 <tr>
-                    <td><?= htmlspecialchars($d['departament_id']) ?></td>
+                    <td><?= htmlspecialchars($d['departament_nom']) ?></td>
                     <td><?= $d['num_incidencies'] ?></td>
                     <td><?= $d['temps_total'] ?> min</td>
                 </tr>
