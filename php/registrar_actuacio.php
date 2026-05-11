@@ -220,7 +220,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
                 let dataFi = new Date(data_fi);
 
                 if(dataFi < data_inici){
-                    error = "La data de finalització no pot ser anterior a la d'inici";
+                    error = "La data de finalització no pot ser menor a la data de creació de la incidència<br>";
                 }
 
                 if(error != ""){
