@@ -14,7 +14,7 @@ $host = $_SERVER['HTTP_HOST']; //obté el domini
 $uri = $_SERVER['REQUEST_URI']; //obté l'URI
 $url = $protocol . "://" .$host . $uri; //Construeix l'URL completa
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown'; //Obté la IP de l'usuari
-$hora = date("d-m-Y H:i:s");
+$hora = date("d/m/Y H:i:s");
 $method = $_SERVER['REQUEST_METHOD']; //Obté el metode que està fent l'usuari
 
 
