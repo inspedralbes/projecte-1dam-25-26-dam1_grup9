@@ -35,13 +35,14 @@ if (isset($_POST['tancar'])) {
     ");
 
     $stmt->execute([$data_final, $id]);
-
 }
 
-$stmtInc = $conn->prepare("SELECT data_tancament FROM incidencies WHERE id = ?");
+$stmtInc = $conn->prepare("SELECT data_tancament, data_obertura FROM incidencies WHERE id = ?");
 $stmtInc->execute([$id]);
 $incidencia = $stmtInc->get_result()->fetch_assoc();
 $data_fi = $incidencia['data_tancament'] ?? null;
+$data_inici = $incidencia['data_obertura'] ?? '' ;
+
 
 $stmt = $conn->prepare(" SELECT data_actuacio, descripcio, temps, visible
     FROM actuacions
@@ -197,15 +198,39 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
 
     <h3>Finalització de la incidència</h3>
 
-        <form method="POST">
+        <form method="POST" onsubmit="return validarForm()">
 
             <b>Data finalització: <br></b>
-            <input type="date" name="data_final" required>
+            <input type="date" name="data_final" id="data_final">
             <br>
             <br>
             <button class="botones" name="tancar"><b>Tancar incidència</b></button>
+            <h4 id="error" style="color:red;"></h4>
         
         </form>
+       
+        <script>
+            function validarForm(){
+
+                let data_inici =new Date("<?= $data_inici ?>");
+                let data_fi = document.getElementById("data_final").value;
+
+                let error = "";
+
+                let dataFi = new Date(data_fi);
+
+                if(dataFi < data_inici){
+                    error = "La data de finalització no pot ser anterior a la d'inici";
+                }
+
+                if(error != ""){
+                    document.getElementById("error").innerHTML = error;
+                    return false; 
+                }
+
+                return true;
+            }
+        </script>
 </fieldset>
 </div>
     <br>

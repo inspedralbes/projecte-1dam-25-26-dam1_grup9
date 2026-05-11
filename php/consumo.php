@@ -184,7 +184,7 @@ $deptArray = array();
             });
         </script>
     </div>
-    
+    <br>
 </div>
 <div>
     <br>
