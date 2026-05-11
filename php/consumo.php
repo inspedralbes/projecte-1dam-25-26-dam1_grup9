@@ -17,7 +17,14 @@ if ($resultat) {
 } else {
     echo "Error en la consulta: " . $conn->error;
 }
+
+$departaments = $resultat->fetch_all(MYSQLI_ASSOC);
+
+$tempsArray = array();
+$deptArray = array();
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -86,6 +93,12 @@ if ($resultat) {
 
         <?php if (count($data) > 0): ?>
             <?php foreach ($data as $d): ?>
+                <?php
+                $tempsArray[] = $d['temps_total'];
+                $deptArray[] = $d['departament_nom']; 
+                $numArray[] = $d['num_incidencies'];
+                ?>
+
                 <tr>
                     <td><?= htmlspecialchars($d['departament_nom']) ?></td>
                     <td><?= $d['num_incidencies'] ?></td>
@@ -99,6 +112,78 @@ if ($resultat) {
         <?php endif; ?>
 
     </table>
+
+    <div style="width: 50%; margin: auto; margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <script  src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            const ctx = document.getElementById('myChart');
+
+            new Chart (ctx, {
+                type: 'pie',
+                data: {
+                    labels: <?php echo json_encode($deptArray); ?>,
+                    datasets: [{
+                        label: 'Temps total (min)',
+                        data: <?php echo json_encode($tempsArray); ?>,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Consum de Temps Total per Departaments'
+                        }
+                    },
+                    scales: {
+
+                        y: {
+                            beginAtZero: true
+
+                        }
+
+                    }
+                    
+                }
+            });
+        </script>
+
+        <canvas id="myChart2" width="400" height="400"></canvas>
+        <script  src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx2 = document.getElementById('myChart2');
+
+            new Chart (ctx2, {
+                type: 'pie',
+                data: {
+                    labels: <?php echo json_encode($deptArray); ?>,
+                    datasets: [{
+                        label: 'Nombre d\'incidències totals',
+                        data: <?php echo json_encode($numArray); ?>,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+
+                        y: {
+                            beginAtZero: true
+
+                        }
+
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Nombre d\'incidències totals per Departament'
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
     
 </div>
 <div>
