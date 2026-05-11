@@ -1,23 +1,26 @@
 <?php include_once "logger.php"?>
 
+<?php include_once "header.php"; ?>
+
 <!DOCTYPE html>
 <html lang="ca">
 <head>
     <meta charset="UTF-8">
     <title>Seleccionar Usuari</title>
     <style>
-        body {
-    height: 100vh;
-    font-family: Arial;
-    background: linear-gradient(135deg, #0648c4be, #25117e);
-    color: white;
-    padding: 15px 35px;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 10px;
-    text-align: center;
+    body {
+        height: 100vh;
+        font-family: Arial;
+        background: linear-gradient(135deg, #0648c4be, #25117e);
+        color: white;
+        padding: 15px 35px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 15%;
              
-}   
+    }   
     button {
         display: block;
         width: 200px;
@@ -25,6 +28,7 @@
         padding: 12px;
         font-size: 16px;
         cursor: pointer;
+        border-radius: 5px;
     }
     </style>
 </head>

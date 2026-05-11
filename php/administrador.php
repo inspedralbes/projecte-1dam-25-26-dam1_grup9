@@ -1,4 +1,5 @@
 <?php include_once "logger.php"?>
+<?php include_once "header.php"; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,6 +16,7 @@
             font-size: 18px;
             font-weight: 600;
             border-radius: 10px;
+            margin-top: 15%;
             
         }
     
@@ -25,33 +27,32 @@
             padding: 12px;
             font-size: 16px;
             cursor: pointer;
+            border-radius: 5px;
         }
         
-        .inicio {
-            text-decoration: none;
-            padding: 10px 20px;
-            background-color: #2d59e9;
-            border: none;
-            color: white;
-        }
-
-        .inicio:hover {
-            background-color: #55a5da;
-        }
     </style>
 </head>
 <body >
 
 <div>
+    <form action="informe.php" method="get">
+        <button type="submit">Informes</button>
+    </form>
 
+    <form action="lista.php" method="get">
+        <button type="submit">Lista d'incidencia</button>
+    </form>
     
     <form action="estadistica.php" method="get">
         <button type="submit">Estadístiques d'Accés</button>
     </form>
 
+    <form action="consumo.php" method="get">
+        <button type="submit">Consum per departament</button>
+    </form>
+    <br>
+    <a href="index.php" class="inicio">Salir</a>
 
-    <br><br>
-    <a href="index.php" class="inicio">Inicio</a>
 
 </div>
 
