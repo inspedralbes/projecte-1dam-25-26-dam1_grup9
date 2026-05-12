@@ -2,7 +2,7 @@
 require 'vendor/autoload.php';
 
 $client = new MongoDB\Client("mongodb://root:example@mongo:27017");
-
+// mongodb+srv://a25marfajdel_db_user:ProjecteFinal_12345.@cluster0.hmpbtpj.mongodb.net/?appName=Cluster0
 $collection = $client->local->user_log;
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
 // Obtenim l'adreça IP origen de la petció.
