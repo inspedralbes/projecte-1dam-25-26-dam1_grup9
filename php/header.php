@@ -43,7 +43,7 @@
                         <a class="inicio" href="index.php">Inici</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="tecnico.php">Tècnic</a>
+                        <a class="nav-link active" aria-current="page" href="elegir_tecnico.php">Tècnic</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -51,8 +51,8 @@
                             Admin
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="informe.php">Informe de Tècnics</a></li>
-                            <li><a class="dropdown-item" href="lista_incidencia.php">Llistar incidència</a></li>
+                            <li><a class="dropdown-item" href="informe_tecnico.php">Informe de Tècnics</a></li>
+                            <li><a class="dropdown-item" href="lista_prioritat.php">Modificar incidència</a></li>
                             <li><a class="dropdown-item" href="consumo.php">Consum per departaments</a></li>
                             <li><a class="dropdown-item" href="estadistica.php">Estadístiques d'Accés</a></li>
                         </ul>

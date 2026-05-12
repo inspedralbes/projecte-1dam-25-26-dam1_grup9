@@ -8,6 +8,7 @@ $result = $conn->query("SELECT data_actuacio, descripcio, visible FROM actuacion
 $actuacions = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,9 +52,16 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
             border-radius: 5px;
             
         }
-
         .botones:hover {
             background-color: #2091d3;
+        }
+        fieldset{
+            border: 2px solid black;
+            margin: 20px auto;
+            width: auto;
+            padding: 2px 15px 30px ;
+            border-radius: 5px;
+        
         }
     </style>
 </head>
@@ -65,69 +73,70 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
         <h1>Consultar incidència</h1>
     </header>
 
-    <br>
-    <div class="form-box">
-        <form method="GET" onsubmit="return validarForm()">
-            <h3><b>Codi incidència:</b></h3>
-            <input type="number" name="codi"  value="<?= htmlspecialchars($id ?? '') ?>">
-            <button type="submit" id="codi">Buscar</button>
-            <h4 id="error" style="color:red;"></h4>
-        </form>
-        <script>
-            function validarForm(){
+    <fieldset>
+       <br>
+        <div class="form-box">
+            <form method="GET" onsubmit="return validarForm()">
+                <h3><b>Codi incidència:</b></h3>
+                <input type="number" name="codi" id="codi" value="<?= htmlspecialchars($id ?? '') ?>">
+                <button type="submit" >Buscar</button>
+                <h4 id="error" style="color:red;"></h4>
+            </form>
+            <script>
+                function validarForm(){
 
-            let codi = document.getElementById("codi").value;
+                let codi = document.getElementById("codi").value;
 
-            let error = "";
+                let error = "";
 
-            if(codi == "" || isNaN(codi) || parseInt(codi) < 0){
-                error += "Id invàlid o no existeix<br>";
+                if(codi == "" || isNaN(codi) || parseInt(codi) <= 0){
+                    error += "Id invàlid<br>";
+                }
+
+                if(error != ""){
+                    document.getElementById("error").innerHTML = error;
+                    return false; 
+                }
+
+                return true; 
             }
+            </script>
+        </div>
 
-            if(error != ""){
-                document.getElementById("error").innerHTML = error;
-                return false; 
-            }
+        <h3>Actuacions visibles</h3>
 
-            return true; 
-        }
-        </script>
-    </div>
-
-    <h3>Actuacions visibles</h3>
-
-    <table>
-        <tr>
-            <th>Data</th>
-            <th>Descripció</th>
-        </tr>
-        
-        <?php if ($id && count($actuacions) > 0): ?>
-                <?php foreach ($actuacions as $a): ?>
-                   <?php if ($a['visible'] == 1) { ?>
-                        <tr>
-                            <td><?= $a['data_actuacio'] ?></td>
-                            <td><?= htmlspecialchars($a['descripcio']) ?></td>
-                        </tr> 
-                    <?php
-                    }?>
-                    
-                <?php endforeach; ?>
-        <?php elseif ($id): ?>
+        <table>
             <tr>
-                <td colspan="3">No hi ha actuacions visibles</td>
+                <th>Data</th>
+                <th>Descripció</th>
             </tr>
-        <?php endif; ?>
+            
+            <?php if ($id && count($actuacions) > 0): ?>
+                    <?php foreach ($actuacions as $a): ?>
+                    <?php if ($a['visible'] == 1) { ?>
+                            <tr>
+                                <td><?= $a['data_actuacio'] ?></td>
+                                <td><?= htmlspecialchars($a['descripcio']) ?></td>
+                            </tr> 
+                        <?php
+                        }?>
+                        
+                    <?php endforeach; ?>
+            <?php elseif ($id): ?>
+                <tr>
+                    <td colspan="3">No hi ha actuacions visibles</td>
+                </tr>
+            <?php endif; ?>
 
-    </table>
+        </table>
 
-<br><br>
-<div style="text-align: left;">
-    <a href="usuari.php" class="botones">Sortir</a>
-</div>
+        <br>
+        <div style="text-align: left;">
+            <a href="usuari.php" class="botones">Sortir</a>
+        </div>
 
-
-</div>
+    </fieldset>
+ </div>    
 
 </body>
 </html>

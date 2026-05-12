@@ -188,7 +188,7 @@ $deptArray = array();
 </div>
 <div>
     <br>
-    <a href="usuari.php" class="inicio">Inicio</a>
+    <a href="administrador.php" class="inicio">Inicio</a>
 </div>
 
 

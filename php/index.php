@@ -40,7 +40,7 @@
         <button type="submit">Usuari</button>
     </form>
 
-    <form action="tecnico.php" method="get">
+    <form action="elegir_tecnico.php" method="get">
         <button type="submit">Tècnic</button>
     </form>
 

@@ -123,7 +123,7 @@ $usuaris = $conn->query("SELECT usuari, COUNT(*) as total
 
         </table>
 
-    <a href="index.php" class="botones" style="margin-top: 20px; display: inline-block;">Inicio</a>
+    <a href="administrador.php" class="botones" style="margin-top: 20px; display: inline-block;">Inicio</a>
 
 </body>
 </html>

@@ -16,7 +16,7 @@
             font-size: 18px;
             font-weight: 600;
             border-radius: 10px;
-            margin-top: 10%;
+            margin-top: 15%;
             
         }
     
@@ -42,7 +42,7 @@
         <button type="submit">Consulta l'estat d'incidència</button>
     </form>
 
-     
-
+    <br>
+    <a href="index.php" class="inicio">Salir</a>
 </body>
 </html>

@@ -110,7 +110,7 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
         
     </table>
     <br>
-    <a href="tecnico.php" class="inicio">Cancelar</a>
+    <a href="administrador.php" class="inicio">Cancelar</a>
 </div>
 
 </body>
