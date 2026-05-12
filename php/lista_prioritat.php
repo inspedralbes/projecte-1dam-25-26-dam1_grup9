@@ -77,6 +77,7 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
     <header>
         <h1>Incidències no resoltes</h1>
     </header>
+    <?php include "header2.php" ?>
     <br>
     <table>
         <tr>

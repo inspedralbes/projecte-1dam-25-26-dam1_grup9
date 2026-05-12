@@ -84,7 +84,7 @@ $incidencies = ($result) ? $result->fetch_all(MYSQLI_ASSOC) : [];
     <header>
         <h1>Incidències no resoltes (Tècnic: <?= htmlspecialchars($id_seleccionat) ?>)</h1>
     </header>
-   
+    <?php include "header2.php" ?>
     <table>
         <h3>Tècnic: <?= htmlspecialchars($id_seleccionat) ?></h3>
         <tr>

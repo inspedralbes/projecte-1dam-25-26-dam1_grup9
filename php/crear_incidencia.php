@@ -36,7 +36,7 @@ function crear_incidencia($conn)
 <head>
     <meta charset="UTF-8">
     <title>Nova Incidència</title>
-
+        
     <style>
         .mensaje {
             margin-top: 25%;
@@ -113,6 +113,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>Registrar nova incidència</h1>
     </header>
 
+    <?php include "header2.php" ?>
+    
     <fieldset style="margin-top: 5%;">
         <form action="crear_incidencia.php" method="post" onsubmit="return validarForm()">
         <label><h4>Departament:</h4></label>

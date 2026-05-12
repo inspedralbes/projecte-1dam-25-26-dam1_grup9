@@ -89,8 +89,9 @@ foreach ($data as $row) {
     <header>
         <h2>Informe</h2>
     </header>
+    <?php include "header2.php" ?>
 
-     <?php if (empty($result)): ?>
+    <?php if (empty($result)): ?>
         <p>No hi ha incidències obertes actualment.</p>
     <?php endif; ?>
 

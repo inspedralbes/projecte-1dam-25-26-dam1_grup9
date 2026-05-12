@@ -72,7 +72,7 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
     <header>
         <h1>Consultar incidència</h1>
     </header>
-
+    <?php include "header2.php" ?>
     <fieldset>
        <br>
         <div class="form-box">

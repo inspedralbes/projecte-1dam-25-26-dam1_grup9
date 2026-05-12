@@ -82,8 +82,7 @@ $deptArray = array();
     <header>
         <h2>Consum per Departaments</h2>
     </header>
-        
-
+    <?php include "header2.php" ?>    
     <table>
         <tr>
             <th>Departament</th>

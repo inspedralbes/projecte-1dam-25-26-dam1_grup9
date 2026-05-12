@@ -86,6 +86,7 @@ $usuaris = $conn->query("SELECT usuari, COUNT(*) as total
     <header>
         <h1>Estadísticas de acceso en els departaments</h1>
     </header>
+    <?php include "header2.php" ?>
     <fieldset>
         <h3 class= "uno">Accesos totales: <?= $total ?></h3>
     </fieldset>
