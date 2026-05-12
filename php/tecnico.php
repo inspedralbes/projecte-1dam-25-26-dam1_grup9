@@ -1,6 +1,6 @@
 <?php include_once "logger.php"?>
 <?php
-$id_tecnic = isset($_GET['tecnic_id']) ? $_GET['tecnic_id'] : '';
+$id_tecnic = isset($_GET['tecnic_id']) ? $_GET['tecnic_id'] : (isset($_GET['id']) ? $_GET['id'] : '');
 
 if (empty($id_tecnic)) {
     header("Location: elegir_tecnico.php");
