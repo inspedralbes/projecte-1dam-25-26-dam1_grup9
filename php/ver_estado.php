@@ -67,11 +67,31 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
 
     <br>
     <div class="form-box">
-        <form method="GET" >
+        <form method="GET" onsubmit="return validarForm()">
             <h3><b>Codi incidència:</b></h3>
-            <input type="number" name="codi" value="<?= htmlspecialchars($id ?? '') ?>">
-            <button type="submit">Buscar</button>
+            <input type="number" name="codi"  value="<?= htmlspecialchars($id ?? '') ?>">
+            <button type="submit" id="codi">Buscar</button>
+            <h4 id="error" style="color:red;"></h4>
         </form>
+        <script>
+            function validarForm(){
+
+            let codi = document.getElementById("codi").value;
+
+            let error = "";
+
+            if(codi == "" || isNaN(codi) || parseInt(codi) < 0){
+                error += "Id invàlid o no existeix<br>";
+            }
+
+            if(error != ""){
+                document.getElementById("error").innerHTML = error;
+                return false; 
+            }
+
+            return true; 
+        }
+        </script>
     </div>
 
     <h3>Actuacions visibles</h3>

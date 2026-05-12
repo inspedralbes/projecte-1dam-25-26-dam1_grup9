@@ -25,8 +25,6 @@ function crear_incidencia($conn)
             <p><a href='index.php' class='inicio'>Salir</a></p> 
         </div>
          
-        <?php else :?>
-            <p class='mensaje'>Error al crear incidència</p>
         <?php endif;
 
         $stmt->close();
@@ -106,9 +104,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>Registrar nova incidència</h1>
     </header>
 
-    <form action="crear_incidencia.php" method="post">
+    <form action="crear_incidencia.php" method="post" onsubmit="return validarForm()">
         <label><h4>Departament:</h4></label>
-            <select name="departament_id" required>
+            <select name="departament_id" id="departament_id" >
                 <option value="">Seleccionar departament</option>
                 <option value="1">Matematiques</option>
                 <option value="2">Informatica</option>
@@ -119,8 +117,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         <label><h4>Descripció:</h4></label>
-        <textarea rows="4" name="descripcio"></textarea>
-        
+        <textarea rows="4" name="descripcio" id="descripcio"></textarea>
+
+            <h4 id="error" style="color:red;"></h4>
         
         <a href="usuari.php" class="inicio">Inicio</a>
         <button type="submit" class="envio">Enviar incidència</button>
@@ -130,6 +129,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php
 }
 ?>
+
+    <script>
+
+        function validarForm(){
+
+            let dept = document.getElementById("departament_id").value;
+            let desc = document.getElementById("descripcio").value;
+
+            let error = "";
+
+            if(dept == ""){
+                error += "Has de seleccionar un departament<br>";
+            }
+
+            if(desc.trim().length < 5){
+                error += "La descripció és massa curta o no hi ha cap descripció<br>";
+            }
+
+        
+            if(error != ""){
+                document.getElementById("error").innerHTML = error;
+                return false; 
+            }
+
+            return true; 
+        }
+
+    </script>
 </div>
 
 </body>
