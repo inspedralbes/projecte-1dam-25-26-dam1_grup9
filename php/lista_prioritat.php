@@ -2,8 +2,9 @@
 require_once "connexion.php";
 include_once "logger.php";
 
-$result = $conn->query("SELECT * FROM incidencies i
-JOIN departament d ON d.id = i.departament_id
+$result = $conn->query("SELECT i.*, d.departament_nom AS nombre 
+FROM incidencies i
+JOIN departament d ON i.departament_id = d.id
 WHERE resolta = 0");
 $incidencies = $result->fetch_all(MYSQLI_ASSOC);
 
@@ -107,7 +108,7 @@ if (mysqli_query($conn, $sql)) {
             <?php foreach ($incidencies as $i): ?>
                 <tr>
                     <td><?= $i['id'] ?></td>
-                    <td><?= htmlspecialchars($i['departament_nom']) ?></td>
+                    <td><?= htmlspecialchars($i['nombre']) ?></td>
                     <td><?= $i['data_obertura'] ?></td>
                     <td><?= $i['prioritat'] ? $i['prioritat'] : '-' ?></td>
                     <td>
