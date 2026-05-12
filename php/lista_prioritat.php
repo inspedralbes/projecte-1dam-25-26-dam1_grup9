@@ -6,7 +6,21 @@ $result = $conn->query("SELECT * FROM incidencies i
 JOIN departament d ON d.id = i.departament_id
 WHERE resolta = 0");
 $incidencies = $result->fetch_all(MYSQLI_ASSOC);
+
+
+if (isset($_GET['eliminar_id'])) {
+    $id = $_GET['eliminar_id'];
+
+$sql = "DELETE FROM incidencies WHERE id = $id";
+
+if (mysqli_query($conn, $sql)) {
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+} 
+}
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -79,6 +93,7 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
     </header>
     <?php include "header2.php" ?>
     <br>
+
     <table>
         <tr>
             <th>ID</th>
@@ -96,9 +111,10 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
                     <td><?= $i['data_obertura'] ?></td>
                     <td><?= $i['prioritat'] ? $i['prioritat'] : '-' ?></td>
                     <td>
-                        <a class="botones" href="editar_actuacio.php?id=<?= $i['id'] ?>">
-                            Editar
-                        </a>
+                        <a class="botones" href="editar_actuacio.php?id=<?= $i['id'] ?>">Editar</a>
+                        <a class="botones" href="?eliminar_id=<?php echo $i['id']; ?>" 
+                         onclick="return confirm('Estàs segur que vols eliminar aquesta incidència? ')"
+                         style="background:red;"  >Borrar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -108,8 +124,8 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
             </tr>
         <?php endif; ?>
 
-        
     </table>
+
     <br>
     <a href="administrador.php" class="inicio">Cancelar</a>
 </div>

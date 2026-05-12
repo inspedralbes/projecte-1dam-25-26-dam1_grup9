@@ -168,9 +168,5 @@ $inc = $res_inc->fetch_assoc();
           
     </form>
     
- 
-
-
-
 </body>
 </html>
