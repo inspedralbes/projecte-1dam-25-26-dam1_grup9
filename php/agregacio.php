@@ -40,21 +40,6 @@ $acces_data = $collection->aggregate([
     ]
 ]);
 
-$usuaris = $collection->aggregate([
-    [
-        '$group' => [
-            '_id' => '$name',
-            'total' => ['$sum' => 1]
-        ]
-    ],
-    [
-        '$project' =>[
-            '_id' => 0,
-            'name' => '$_id',
-            'total' => 1
-        ]
-    ]
-]);
 $pagina = $_GET['URL'] ?? '';
 $data = $_GET['date'] ?? ''; 
 
