@@ -179,7 +179,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
 <fieldset style="padding-right: 25%;">
 
     <h3>Nova actuació</h3>
-
+        
         <form method="POST">
             <textarea name="descripcio" placeholder="Descripció" required></textarea><br>
             <input type="number" name="temps" placeholder="Temps (minuts)" required><br>

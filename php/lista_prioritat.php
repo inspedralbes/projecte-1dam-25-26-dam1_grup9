@@ -2,11 +2,26 @@
 require_once "connexion.php";
 include_once "logger.php";
 
-$result = $conn->query("SELECT * FROM incidencies i
-JOIN departament d ON d.id = i.departament_id
+$result = $conn->query("SELECT i.*, d.departament_nom AS nombre 
+FROM incidencies i
+JOIN departament d ON i.departament_id = d.id
 WHERE resolta = 0");
 $incidencies = $result->fetch_all(MYSQLI_ASSOC);
+
+
+if (isset($_GET['eliminar_id'])) {
+    $id = $_GET['eliminar_id'];
+
+$sql = "DELETE FROM incidencies WHERE id = $id";
+
+if (mysqli_query($conn, $sql)) {
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+} 
+}
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -77,7 +92,9 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
     <header>
         <h1>Incidències no resoltes</h1>
     </header>
+    <?php include "header2.php" ?>
     <br>
+
     <table>
         <tr>
             <th>ID</th>
@@ -91,13 +108,14 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
             <?php foreach ($incidencies as $i): ?>
                 <tr>
                     <td><?= $i['id'] ?></td>
-                    <td><?= htmlspecialchars($i['departament_nom']) ?></td>
+                    <td><?= htmlspecialchars($i['nombre']) ?></td>
                     <td><?= $i['data_obertura'] ?></td>
                     <td><?= $i['prioritat'] ? $i['prioritat'] : '-' ?></td>
                     <td>
-                        <a class="botones" href="editar_actuacio.php?id=<?= $i['id'] ?>">
-                            Editar
-                        </a>
+                        <a class="botones" href="editar_actuacio.php?id=<?= $i['id'] ?>">Editar</a>
+                        <a class="botones" href="?eliminar_id=<?php echo $i['id']; ?>" 
+                         onclick="return confirm('Estàs segur que vols eliminar aquesta incidència? ')"
+                         style="background:red;"  >Borrar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -107,10 +125,10 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
             </tr>
         <?php endif; ?>
 
-        
     </table>
+
     <br>
-    <a href="tecnico.php" class="inicio">Cancelar</a>
+    <a href="administrador.php" class="inicio">Cancelar</a>
 </div>
 
 </body>

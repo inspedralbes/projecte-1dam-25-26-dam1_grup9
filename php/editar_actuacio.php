@@ -55,11 +55,13 @@ $inc = $res_inc->fetch_assoc();
     <meta charset="UTF-8">
 
     <style>
+        body{
+            font-family:arial;
+        }
         header {
                 background: linear-gradient(to right, #23e2c2, #6a8bf0);
                 color: white;
                 padding: 20px;
-                font-family: Arial;
                 text-align: center;
         }
         select{
@@ -79,11 +81,18 @@ $inc = $res_inc->fetch_assoc();
             font-size: 16px;
             border-radius: 5px;
             text-decoration: none;
-            font-family: Arial;
         }
 
         .botones:hover {
             background: #54a7df;
+        }
+        fieldset{
+            border: 2px solid black;
+            margin: 20px auto;
+            width: 50%;
+            padding: 2px 15px;
+            border-radius: 5px;
+        
         }
     </style>
 </head>
@@ -99,72 +108,65 @@ $inc = $res_inc->fetch_assoc();
 
     <form method="POST">
 
-        
-        <p><b>Tècnic assignat:</b></p>
-        <select name="tecnic" required>
-            <option value="">Seleccionar tècnic</option>
-            <?php foreach ($tecnics as $t): ?>
-                <option value="<?= $t['id'] ?>"
-                    <?= ($inc['tecnic_id'] ?? "") == $t['id'] ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($t['nom']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+        <fieldset>
+            <p><b>Tècnic assignat:</b></p>
+                <select name="tecnic" required>
+                    <option value="">Seleccionar tècnic</option>
+                    <?php foreach ($tecnics as $t): ?>
+                        <option value="<?= $t['id'] ?>"
+                            <?= ($inc['tecnic_id'] ?? "") == $t['id'] ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($t['nom']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
 
-       
-        <p><b>Prioritat:</b></p>
-        <div>
-            <label>
-                <input type="radio" name="prioritat" value="Alta" required
-                <?= ($inc['prioritat'] ?? "") == "Alta" ? "checked" : "" ?>>
-                Alta
+            <p><b>Prioritat:</b></p>
+            <div>
+                <label>
+                    <input type="radio" name="prioritat" value="Alta" required
+                    <?= ($inc['prioritat'] ?? "") == "Alta" ? "checked" : "" ?>>
+                    Alta
+                </label>
 
+                <label>
+                    <input type="radio" name="prioritat" value="Mitja" required
+                    <?= ($inc['prioritat'] ?? "") == "Mitja" ? "checked" : "" ?>>
+                    Mitja
+                </label>
 
+                <label>
+                    <input type="radio" name="prioritat" value="Baixa" required
+                    <?= ($inc['prioritat'] ?? "") == "Baixa" ? "checked" : "" ?>>
+                    Baixa
+                </label>
+            </div>
 
-            </label>
-
-            <label>
-                <input type="radio" name="prioritat" value="Mitja" required
-                <?= ($inc['prioritat'] ?? "") == "Mitja" ? "checked" : "" ?>>
-                Mitja
-            </label>
-
-            <label>
-                <input type="radio" name="prioritat" value="Baixa" required
-                <?= ($inc['prioritat'] ?? "") == "Baixa" ? "checked" : "" ?>>
-                Baixa
-            </label>
-        </div>
-
-        <br>
+            <br>
     
-        <p><b>Tipus d'incidència:</b></p>
-        <div >
-            <label >
-                <input type="radio" name="tipus" value="Software" required
-                <?= ($inc['tipus'] ?? "") == "Software" ? "checked" : "" ?>>
-                Software
-                <input type="radio" name="tipus" value="Hardware" required
-                <?= ($inc['tipus'] ?? "") == "Hardware" ? "checked" : "" ?>>
-                Hardware    
-                <input type="radio" name="tipus" value="Xarxa" required
-                <?= ($inc['tipus'] ?? "") == "Xarxa" ? "checked" : "" ?>>
-                Xarxa
-                <input type="radio" name="tipus" value="Altres" required
-                <?= ($inc['tipus'] ?? "") == "Altres" ? "checked" : "" ?>>
-                Altres
-            </label> 
+            <p><b>Tipus d'incidència:</b></p>
+            <div >
+                <label >
+                    <input type="radio" name="tipus" value="Software" required
+                    <?= ($inc['tipus'] ?? "") == "Software" ? "checked" : "" ?>>
+                    Software
+                    <input type="radio" name="tipus" value="Hardware" required
+                    <?= ($inc['tipus'] ?? "") == "Hardware" ? "checked" : "" ?>>
+                    Hardware    
+                    <input type="radio" name="tipus" value="Xarxa" required
+                    <?= ($inc['tipus'] ?? "") == "Xarxa" ? "checked" : "" ?>>
+                    Xarxa
+                    <input type="radio" name="tipus" value="Altres" required
+                    <?= ($inc['tipus'] ?? "") == "Altres" ? "checked" : "" ?>>
+                    Altres
+                </label> 
             
-        <br>
-    <button class="botones" type="submit" name="guardar" >
-        Guardar canvis
-    </button>
-        <a href="lista_prioritat.php" class="botones">Salir</a>    
+                <br>
+                <button class="botones" type="submit" name="guardar" >Guardar canvis</button>
+                <a href="lista_prioritat.php" class="botones">Salir</a>
+            </div>        
+        </fieldset>
+          
     </form>
     
- 
-
-</div>
-
 </body>
 </html>

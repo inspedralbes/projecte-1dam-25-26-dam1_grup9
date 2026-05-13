@@ -86,6 +86,7 @@ $usuaris = $conn->query("SELECT usuari, COUNT(*) as total
     <header>
         <h1>Estadísticas de acceso en els departaments</h1>
     </header>
+    <?php include "header2.php" ?>
     <fieldset>
         <h3 class= "uno">Accesos totales: <?= $total ?></h3>
     </fieldset>
@@ -123,7 +124,7 @@ $usuaris = $conn->query("SELECT usuari, COUNT(*) as total
 
         </table>
 
-    <a href="index.php" class="botones" style="margin-top: 20px; display: inline-block;">Inicio</a>
+    <a href="administrador.php" class="botones" style="margin-top: 20px; display: inline-block;">Inicio</a>
 
 </body>
 </html>

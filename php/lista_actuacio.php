@@ -1,12 +1,29 @@
 <?php
+session_start();
+
 require_once "connexion.php";
 include_once "logger.php";
 
-$result = $conn->query("SELECT * FROM incidencies i
-JOIN departament d ON d.id = i.departament_id
-WHERE resolta = 0");
-$incidencies = $result->fetch_all(MYSQLI_ASSOC);
+if (isset($_GET['id'])) {
+    $_SESSION['tecnic_id'] = $_GET['id'];
+}
+
+if (!isset($_SESSION['tecnic_id'])) {
+    header("Location: elegir_tecnico.php");
+    exit();
+}
+
+$id_seleccionat = $_SESSION['tecnic_id'];
+
+$sql = "SELECT * FROM incidencies i 
+        JOIN departament d ON d.id = i.departament_id 
+        WHERE i.resolta = 0 
+        AND i.tecnic_id =  " . intval($id_seleccionat);
+
+$result = $conn->query($sql);
+$incidencies = ($result) ? $result->fetch_all(MYSQLI_ASSOC) : [];
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -65,10 +82,11 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
 
 <div >
     <header>
-        <h1>Incidències no resoltes</h1>
+        <h1>Incidències no resoltes (Tècnic: <?= htmlspecialchars($id_seleccionat) ?>)</h1>
     </header>
-   
+    <?php include "header2.php" ?>
     <table>
+        <h3>Tècnic: <?= htmlspecialchars($id_seleccionat) ?></h3>
         <tr>
             <th>ID</th>
             <th>Departament</th>
@@ -99,7 +117,7 @@ $incidencies = $result->fetch_all(MYSQLI_ASSOC);
 
     </table>
     <br>
-    <a href="tecnico.php" class="botones">Salir</a>
+    <a href="tecnico.php?id=<?= $id_seleccionat ?>" class="botones">Salir</a>
 
 </div>
 

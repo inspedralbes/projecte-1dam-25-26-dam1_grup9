@@ -36,7 +36,7 @@ function crear_incidencia($conn)
 <head>
     <meta charset="UTF-8">
     <title>Nova Incidència</title>
-
+        
     <style>
         .mensaje {
             margin-top: 25%;
@@ -53,6 +53,7 @@ function crear_incidencia($conn)
         }
         body {
             font-family: Arial;
+            
         }
 
         input, select, textarea {
@@ -85,6 +86,14 @@ function crear_incidencia($conn)
         .inicio:hover {
             background-color: #5833e0;
         }
+        fieldset{
+            border: 2px solid black;
+            margin: 20px auto;
+            width: 50%;
+            padding: 2px 15px;
+            border-radius: 5px;
+        
+        }
         
     </style>
 </head>
@@ -104,7 +113,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>Registrar nova incidència</h1>
     </header>
 
-    <form action="crear_incidencia.php" method="post" onsubmit="return validarForm()">
+    <?php include "header2.php" ?>
+    
+    <fieldset style="margin-top: 5%;">
+        <form action="crear_incidencia.php" method="post" onsubmit="return validarForm()">
         <label><h4>Departament:</h4></label>
             <select name="departament_id" id="departament_id" >
                 <option value="">Seleccionar departament</option>
@@ -125,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit" class="envio">Enviar incidència</button>
         
         
-    </form>
+        </form>
 <?php
 }
 ?>
@@ -157,6 +169,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
     </script>
+    </fieldset>
+    
 </div>
 
 </body>

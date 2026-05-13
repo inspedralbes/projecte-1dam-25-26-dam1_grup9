@@ -1,4 +1,14 @@
 <?php include_once "logger.php"?>
+<?php
+$id_tecnic = isset($_GET['tecnic_id']) ? $_GET['tecnic_id'] : (isset($_GET['id']) ? $_GET['id'] : '');
+
+if (empty($id_tecnic)) {
+    header("Location: elegir_tecnico.php");
+    exit();
+}
+$nom = isset($noms[$id_tecnic]) ? $noms[$id_tecnic] : "Usuari desconegut";
+?>
+
 <?php include_once "header.php"; ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -39,17 +49,18 @@
 
     
     <form action="lista_actuacio.php" method="get">
+         <input type="hidden" name="id" value="<?php echo htmlspecialchars($id_tecnic); ?>">
         <button type="submit">Registrar actuació</button>
     </form>
 
-    <form action="lista_prioritat.php" method="get">
-        <button type="submit">Modificar incidencia</button>
-    </form>
 
-    <form action="informe.php" method="get">
+    <form action="informe_tecnico.php" method="get">
+         <input type="hidden" name="id" value="<?php echo htmlspecialchars($id_tecnic); ?>">
         <button type="submit">Informes</button>
     </form>
 
+    <br>
+    <a href="index.php" class="inicio">Salir</a>
 
 </div>
 

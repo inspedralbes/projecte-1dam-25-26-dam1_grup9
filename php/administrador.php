@@ -39,17 +39,19 @@
         <button type="submit">Informes</button>
     </form>
 
-    <form action="lista.php" method="get">
-        <button type="submit">Lista d'incidencia</button>
+    <form action="lista_prioritat.php" method="get">
+        <button type="submit">Modificar incidencia</button>
+    </form>
+
+    <form action="consumo.php" method="get">
+        <button type="submit">Consum per departament</button>
     </form>
     
     <form action="estadistica.php" method="get">
         <button type="submit">Estadístiques d'Accés</button>
     </form>
 
-    <form action="consumo.php" method="get">
-        <button type="submit">Consum per departament</button>
-    </form>
+   
     <br>
     <a href="index.php" class="inicio">Salir</a>
 
