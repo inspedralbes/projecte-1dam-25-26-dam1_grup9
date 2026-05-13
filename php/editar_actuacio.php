@@ -53,7 +53,7 @@ $inc = $res_inc->fetch_assoc();
 <html>
 <head>
     <meta charset="UTF-8">
-
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">          
     <style>
         body{
             font-family:arial;
@@ -72,20 +72,6 @@ $inc = $res_inc->fetch_assoc();
             margin: 10px;
             width: 25%;
         }
-
-        .botones {
-            background: #2c51f1;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .botones:hover {
-            background: #54a7df;
-        }
         fieldset{
             border: 2px solid black;
             margin: 20px auto;
@@ -102,6 +88,7 @@ $inc = $res_inc->fetch_assoc();
 <header>
     <h1>Editar incidència <span style="color: black;"># <?= $id ?></span></h1>
 </header>
+    <?php include "header2.php" ?>
 
 <div >
 
@@ -109,8 +96,9 @@ $inc = $res_inc->fetch_assoc();
     <form method="POST">
 
         <fieldset>
+            <br>
             <p><b>Tècnic assignat:</b></p>
-                <select name="tecnic" required>
+                <select class="form-select" name="tecnic" required>
                     <option value="">Seleccionar tècnic</option>
                     <?php foreach ($tecnics as $t): ?>
                         <option value="<?= $t['id'] ?>"
@@ -119,6 +107,7 @@ $inc = $res_inc->fetch_assoc();
                         </option>
                     <?php endforeach; ?>
                 </select>
+                <br>
 
             <p><b>Prioritat:</b></p>
             <div>
@@ -159,10 +148,10 @@ $inc = $res_inc->fetch_assoc();
                     <?= ($inc['tipus'] ?? "") == "Altres" ? "checked" : "" ?>>
                     Altres
                 </label> 
-            
                 <br>
-                <button class="botones" type="submit" name="guardar" >Guardar canvis</button>
-                <a href="lista_prioritat.php" class="botones">Salir</a>
+                <br>
+                <button class="btn btn-success" type="submit" name="guardar" >Guardar canvis</button>
+                <a href="lista_prioritat.php" class="btn btn-primary">Salir</a>
             </div>        
         </fieldset>
           
