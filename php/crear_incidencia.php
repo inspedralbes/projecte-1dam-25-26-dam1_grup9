@@ -36,31 +36,15 @@ function crear_incidencia($conn)
 <head>
     <meta charset="UTF-8">
     <title>Nova Incidència</title>
-        
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">   
     <style>
-        .mensaje {
-            margin-top: 25%;
-            color: green;
-            text-align: center;
-            
-        }
+     
         header {
             background: linear-gradient(to right, #23e2c2, #6a8bf0);
             color: white;
             padding: 20px;
             font-family: Arial;
             text-align: center;
-        }
-        body {
-            font-family: Arial;
-            
-        }
-
-        input, select, textarea {
-            display: block;
-            width: 300px;
-            margin: 10px 0;
-            padding: 8px;
         }
 
         button {
@@ -71,21 +55,6 @@ function crear_incidencia($conn)
             
         }
 
-        .inicio {
-            text-decoration: none;
-            padding: 10px 20px;
-            background-color: #6285e7;
-            color: white;
-            border-radius: 5px;
-        }
-        .envio {
-            background-color: #e7b75e;
-            color: black;
-        }
-
-        .inicio:hover {
-            background-color: #5833e0;
-        }
         fieldset{
             border: 2px solid black;
             margin: 20px auto;
@@ -94,7 +63,6 @@ function crear_incidencia($conn)
             border-radius: 5px;
         
         }
-        
     </style>
 </head>
 
@@ -117,8 +85,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <fieldset style="margin-top: 5%;">
         <form action="crear_incidencia.php" method="post" onsubmit="return validarForm()">
-        <label><h4>Departament:</h4></label>
-            <select name="departament_id" id="departament_id" >
+        <br>
+        <label  class="form-label"><h5>Departament:</h5></label>
+            <select class="form-select" name="departament_id" id="departament_id" >
                 <option value="">Seleccionar departament</option>
                 <option value="1">Matematiques</option>
                 <option value="2">Informatica</option>
@@ -127,14 +96,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <option value="5">Ciencies</option>
             </select>
 
-
-        <label><h4>Descripció:</h4></label>
-        <textarea rows="4" name="descripcio" id="descripcio"></textarea>
-
+        <div class="mb-3">
+            <br>
+            <label  class="form-label"><h5>Descripció:</h5></label>
+            <textarea  class="form-control" rows="4" name="descripcio" id="descripcio"></textarea>
+        </div>
             <h4 id="error" style="color:red;"></h4>
         
-        <a href="usuari.php" class="inicio">Inicio</a>
-        <button type="submit" class="envio">Enviar incidència</button>
+        <a href="usuari.php" class="btn btn-primary">Inicio</a>
+        <button  type="submit" class="btn btn-success" >Enviar incidència</button>
         
         
         </form>

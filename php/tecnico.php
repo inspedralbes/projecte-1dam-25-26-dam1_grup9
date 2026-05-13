@@ -60,7 +60,7 @@ $nom = isset($noms[$id_tecnic]) ? $noms[$id_tecnic] : "Usuari desconegut";
     </form>
 
     <br>
-    <a href="index.php" class="inicio">Salir</a>
+    <a href="index.php" class="btn btn-primary">Salir</a>
 
 </div>
 

@@ -19,40 +19,25 @@
             margin-top: 15%;
             
         }
-    
-    	button {
-            width: 150px;
-            margin: 10px auto;
-            padding: 5px;
-            font-size: 16px;
-            border-radius: 5px;
-            background-color: #2d59e9;
-            color:white;
-        }
         fieldset{
             border: 2px solid black;
             margin: 20px auto;
             width: 50%;
-            
             padding: 30px 15px 50px 10px;
             border-radius: 5px;
             background: white
         }
-        select {
-            width: 300px;
-            margin: 10px 0;
-            padding: 8px;
-            border-radius:5px
-        }
+      
     
     </style>
 </head>
 <body >
 <div>
     <fieldset>
+         <div class="mb-3">
         <form method="get" action="tecnico.php"> 
-        <label><h4>Selecciona el teu nom: </h4></label><br>
-            <select name="tecnic_id" id="tecnic_id" >
+        <label class="form-label">Selecciona el teu nom: </label><br>
+            <select class="form-select" name="tecnic_id" id="tecnic_id" >
                 <option value="">Seleccionar tècnic</option>
                 <option value="1">Tècnic 1</option>
                 <option value="2">Tècnic 2</option>
@@ -61,8 +46,8 @@
                 <option value="5">Tècnic 5</option>
             </select>
         <br>
-
-        <button type="submit"><b>Iniciar Secció</b></button>    
+        </div>
+        <button type="submit" class="btn btn-primary"><b>Iniciar Secció</b></button>    
     </fieldset>
     
    
