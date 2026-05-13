@@ -47,9 +47,10 @@
             </select>
         <br>
         </div>
-        <button type="submit" class="btn btn-primary"><b>Iniciar Secció</b></button>    
+        <button type="submit" class="btn btn-success"><b>Iniciar Secció</b></button>
+            
     </fieldset>
-    
+    <a href="usuari.php" class="btn btn-secondary"><b>Salir</b></a>
    
 </div>
 

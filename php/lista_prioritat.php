@@ -38,10 +38,9 @@ if (mysqli_query($conn, $sql)) {
             text-align: center;
         }
         table {
-            
             border-collapse: collapse;
-            width: 100%;
-            
+            width: 90%;
+            margin: auto;
         }
 
         th, td {
