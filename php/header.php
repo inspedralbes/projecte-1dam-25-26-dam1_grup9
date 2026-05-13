@@ -52,6 +52,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="informe.php">Informe de Tècnics</a></li>
+                            <li><a class="dropdown-item" href="informe_actuacio.php">Informe d'actuació</a></li>
                             <li><a class="dropdown-item" href="lista_prioritat.php">Modificar incidència</a></li>
                             <li><a class="dropdown-item" href="consumo.php">Consum per departaments</a></li>
                             <li><a class="dropdown-item" href="estadistica.php">Estadístiques d'Accés</a></li>

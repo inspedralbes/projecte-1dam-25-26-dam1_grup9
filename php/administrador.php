@@ -36,7 +36,11 @@
 
 <div>
     <form action="informe.php" method="get">
-        <button type="submit">Informes</button>
+        <button type="submit">Informe de Tècnics</button>
+    </form>
+
+    <form action="informe_actuacio.php" method="get">
+        <button type="submit">Informe d'actuació</button>
     </form>
 
     <form action="lista_prioritat.php" method="get">

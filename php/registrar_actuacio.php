@@ -138,6 +138,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
 <header>
     <h1>Registrar actuació - Incidència <span style="color: black;"># <?= $id ?></span></h1>
 </header>
+<?php include "header2.php" ?>
 <fieldset>
 
     <h2>Historial d'actuacions</h2>
