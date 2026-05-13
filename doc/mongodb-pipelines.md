@@ -61,3 +61,5 @@ En el bloc de group, afegim com ID principal la data que s'ha accedit i el retal
     ]
 ```
 Ordenem la data de manera ascendent (del més nou cap el més antic).
+
+---
