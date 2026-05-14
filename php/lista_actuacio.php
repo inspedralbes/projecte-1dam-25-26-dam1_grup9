@@ -4,27 +4,36 @@ session_start();
 require_once "connexion.php";
 include_once "logger.php";
 
+//Asegura que el id existe
 if (isset($_GET['id'])) {
+    //Guarda ese id aquí
     $_SESSION['tecnic_id'] = $_GET['id'];
 }
-
+// si no hay un id guardado se le enviara a la pagian para que eliga al tecnico
 if (!isset($_SESSION['tecnic_id'])) {
     header("Location: elegir_tecnico.php");
     exit();
 }
-
+// si el id es valido,guardalo para que pueda ser usado en la consulta
 $id_seleccionat = $_SESSION['tecnic_id'];
 
+// Consulta las incidencia con su departamento correspondiente y que sea una incidencia no resuleta
+// donde ademas debe solo verse para el tecnico al que fue asigando (la que entro a la pagina)
+// 'intval()' es una función de seguridad que transforma cualquier texto en un número entero
 $sql = "SELECT * FROM incidencies i 
         JOIN departament d ON d.id = i.departament_id 
         WHERE i.resolta = 0 
         AND i.tecnic_id =  " . intval($id_seleccionat);
 
 $result = $conn->query($sql);
-$incidencies = ($result) ? $result->fetch_all(MYSQLI_ASSOC) : [];
+if ($result) {
+    // Si la consulta fue bien ejecutalo
+    $incidencies = $result->fetch_all(MYSQLI_ASSOC);
+} else {
+    // Si falló, crea una lista vacía para que la pagina no de un error
+    $incidencies = [];
+}
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
