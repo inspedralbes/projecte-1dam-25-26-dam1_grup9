@@ -60,9 +60,9 @@ foreach ($data as $row) {
 
     table {
         
-        width: 100%;
+        width: 90%;
         border-collapse: collapse;
-        margin-bottom: 20px;
+        margin: auto;
     }
 
     th, td {

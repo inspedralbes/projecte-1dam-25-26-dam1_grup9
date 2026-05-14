@@ -48,11 +48,11 @@ foreach ($data as $row) {
         font-family: Arial;
     }
 
-    table {
-        
-        width: 100%;
+    table { 
+        width: 90%;
         border-collapse: collapse;
         margin-bottom: 20px;
+        margin: 20px
     }
 
     th, td {

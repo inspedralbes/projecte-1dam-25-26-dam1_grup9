@@ -13,8 +13,8 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
 <html>
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Consultar incidència</title>
-
     <style>
         header {
             background: linear-gradient(to right, #23e2c2, #6a8bf0);
@@ -44,22 +44,11 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
             color: white;
         }
 
-        .botones {
-            padding: 10px 20px;
-            background-color: #4952ca;
-            text-decoration: none;
-            color: white;
-            border-radius: 5px;
-            
-        }
-        .botones:hover {
-            background-color: #2091d3;
-        }
         fieldset{
             border: 2px solid black;
             margin: 20px auto;
-            width: auto;
-            padding: 2px 15px 30px ;
+            width: 70%;
+            padding: 2px 15px;
             border-radius: 5px;
         
         }
@@ -68,18 +57,18 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
 
 <body>
 
-<div class="box">
+<div class="mb-3">
     <header>
         <h1>Consultar incidència</h1>
     </header>
-    <?php include "header2.php" ?>
+    <?php include_once "header2.php" ?>
     <fieldset>
        <br>
-        <div class="form-box">
+        <div class="mb-3">
             <form method="GET" onsubmit="return validarForm()">
-                <h3><b>Codi incidència:</b></h3>
-                <input type="number" name="codi" id="codi" value="<?= htmlspecialchars($id ?? '') ?>">
-                <button type="submit" >Buscar</button>
+                <label  class="form-label"><h5><b>Codi incidència:</b></h5></label>
+                <input  type="number" name="codi" id="codi" value="<?= htmlspecialchars($id ?? '') ?>">
+                <button class="btn btn-primary" type="submit" >Buscar</button>
                 <h4 id="error" style="color:red;"></h4>
             </form>
             <script>
@@ -103,7 +92,7 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
             </script>
         </div>
 
-        <h3>Actuacions visibles</h3>
+        <h5><b>Actuacions visibles</b></h5>
 
         <table>
             <tr>
@@ -132,11 +121,11 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
 
         <br>
         <div style="text-align: left;">
-            <a href="usuari.php" class="botones">Sortir</a>
+            <a class="btn btn-primary" href="usuari.php" >Sortir</a>
         </div>
-
+        <br>
     </fieldset>
  </div>    
-
+ 
 </body>
 </html>

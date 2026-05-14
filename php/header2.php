@@ -88,6 +88,7 @@
             <a class="boton">Admin <span>▼</span></a>
             <div class="opciones">
                 <a href="informe.php">Informe de Tècnics</a>
+                <a href="informe_actuacio.php">Informe d'actuació</a>
                 <a href="lista_prioritat.php">Modificar incidència</a>
                 <a href="consumo.php">Consum per departaments</a>
                 <a href="estadistica.php">Estadístiques d'Accés</a>
