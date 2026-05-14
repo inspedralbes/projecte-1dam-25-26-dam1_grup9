@@ -22,11 +22,20 @@ $pagines = $collection->aggregate( [
     [
         '$project' => [
             '_id' => 0,
-            'URL' => '$_id',
+            'URL' => [
+                '$concat' => [
+                    '/',
+                    [
+                        '$arrayElemAt' => [
+                            [ '$split' => ['$_id', '/'] ], -1
+                        ]
+                    ]
+                ]
+            ],
             'total' => 1
         ]
     ]
-]);
+])->toArray();
 
 $acces_data = $collection->aggregate([
     [
@@ -46,7 +55,7 @@ $acces_data = $collection->aggregate([
             'total' => 1
         ]
     ]
-]);
+])->toArray();
 
 $pagina = $_GET['URL'] ?? '';
 $data = $_GET['date'] ?? ''; 
@@ -111,9 +120,6 @@ foreach ($resultat as $fila) {
     }
     body .div_principal {
         margin-top: 20px;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
     }
     form{
         width: 35%;
@@ -186,11 +192,16 @@ foreach ($resultat as $fila) {
         width: 80%;
         display: flex;
         flex-direction: column;
-        align-items: center;
         box-shadow: 0 2px 10px rgba(0,0.1,0.1,0.5);
         border-radius: 5px;
         border: 1px solid #ccc;
         margin: 0 auto;
+    }
+    .div_secundaria{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 20px;
     }
     .taula_individual {
         border: 1px solid #ccc;
@@ -203,9 +214,11 @@ foreach ($resultat as $fila) {
         background-color: #e6e6e6;
     }
     .taules{
+        margin-left: 20%;
+        margin-bottom: 20px;
         display: flex;
-        gap: 30px
-        flex-direction: flex-start;
+        gap: 30px;
+        width: 60%;
     }
     .taules div{
         margin-left: 20px;
@@ -215,7 +228,8 @@ foreach ($resultat as $fila) {
         text-align: center;
     }
     .total{
-        border: 1px solid #ccc;
+        border: 1px solid #d4d2d2;
+        background-color: #d4d2d2;
         padding: 10px;
         width: 25%;
         border-radius: 5px;
@@ -229,7 +243,8 @@ foreach ($resultat as $fila) {
     }
     .resum{
         text-align: center;
-        margin: 20px auto;
+        margin: 20px;
+        margin-left: 12%;
         float: left;
         width: 320px;
         background: #ececec;
@@ -248,6 +263,36 @@ foreach ($resultat as $fila) {
         width: 100%;
         align-items: center;
     }
+    .pagines{
+        background-color: #e6e6e6;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+        padding: 0px 20px 20px 20px;
+        width: 20%;
+        float: left;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    .pagina_info{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    .barra_fons{
+        width: 100%;
+        height: 8px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .barra_progress {
+        height: 100%;
+        background-color: #4327e2;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
     tr:nth-child(even){background-color: #95c3ff}
 </style>
 
@@ -259,7 +304,7 @@ foreach ($resultat as $fila) {
     <div class="div_principal">
         <div class="filtre">
             <h2>Buscar accessos</h2>
-                    <form method="GET" class="mb-3">
+                    <form method="GET">
                         <div>
                             <input type="date" name="date" value="<?= htmlspecialchars($data) ?>">
                             <input type="text" name="URL" placeholder="/inici" value="<?= htmlspecialchars($pagina) ?>">
@@ -273,13 +318,33 @@ foreach ($resultat as $fila) {
                             <h2><?= $total ?></h2>
                         </div>
                     <?php else: ?>
-                        <p>Introdueix almenys una data o insereix tot el link.</p>
+                        <p>Introdueix almenys una data o insereix el link.</p>
                     <?php endif; ?>
         </div>
-        <div class="resum">
-            <h2>Resum</h2>
-            <p>Total accessos: <?= $totalaccess ?></p>
-
+        <div class="div_secundaria">
+            <div class="pagines">
+                <h2>Pàgines més visitades</h2>
+                <?php 
+                $totalvisites = $pagines[0]['total'];
+                foreach($pagines as $pag):
+                    $perc = ($pag['total'] / $totalvisites) * 100;
+                    
+                ?>
+                <div class="pagina_info">
+                    <span><?= $pag['URL'] ?></span>
+                    <span><?= $pag['total'] ?> visites</span>
+                </div>
+                <div class="barra_fons">
+                    <div class="barra_progress" style="width: <?= $perc ?>%"></div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="resum">
+                <h2>Total d'accessos</h2>
+                <div>
+                    <h1><?= $totalaccess ?></h1>
+                </div>
+            </div>
         </div>
         <div class="taules"> 
             <div class="taula_individual">
