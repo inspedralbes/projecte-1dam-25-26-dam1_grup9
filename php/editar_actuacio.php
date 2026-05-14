@@ -3,7 +3,7 @@ require_once "connexion.php";
 require_once "logger.php";
 
 // Obtenemos el id que teniamos antes 
-// Si no existe se le asignará el valor null por defecto usando el operador ??
+// Si no existe se le asignará el valor null por defecto usando el operador ?? 
 $id = $_GET['id'] ?? null;
 
 // Si no hay un id se mostrara un mensaje de error
