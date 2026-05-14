@@ -2,19 +2,25 @@
 require_once "connexion.php";
 include_once "logger.php";
 
+// Pide a la base de datos las incidencias no resueltas (resolta = 0) y su departamento
 $result = $conn->query("SELECT i.*, d.departament_nom AS nombre 
 FROM incidencies i
 JOIN departament d ON i.departament_id = d.id
 WHERE resolta = 0");
+
 $incidencies = $result->fetch_all(MYSQLI_ASSOC);
 
-
+// Si han pulsado eliminar 
 if (isset($_GET['eliminar_id'])) {
-    $id = $_GET['eliminar_id'];
-
+    // Forzamos a que el ID sea estrictamente un número entero y que se guarde en la variable $id
+    $id = intval($_GET['eliminar_id']);
+    
+ // Le pide que borre esa fila
 $sql = "DELETE FROM incidencies WHERE id = $id";
 
+// Envía la orden de borrado a la bbdd y comprueba si ha ido bien
 if (mysqli_query($conn, $sql)) {
+    // Recarga la misma página para limpiar el "?eliminar_id" de la barra de direcciones
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 } 
