@@ -2,9 +2,11 @@
 require_once "connexion.php";
 include_once "logger.php";
 
+// Convertimos a número entero para evitar ataques maliciosos (Inyección SQL)
 $id = intval($_GET['codi']?? 0);
+// Hacemos la consulta con el id 
 $result = $conn->query("SELECT data_actuacio, descripcio, visible FROM actuacions Where incidencia_id = $id");
-
+// Guardamos todas las actuaciones encontradas en una lista (Array)
 $actuacions = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
@@ -72,22 +74,25 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
                 <h4 id="error" style="color:red;"></h4>
             </form>
             <script>
+                // Función de JavaScript para comprobar que los campos no estén vacíos
+                //( si esta vacio muestra un mensaje de error) antes de enviar a PHP
                 function validarForm(){
 
                 let codi = document.getElementById("codi").value;
-
                 let error = "";
 
+                // Da error si está vacío, si no es un número (isNaN) o si es menor o igual a 0
                 if(codi == "" || isNaN(codi) || parseInt(codi) <= 0){
                     error += "Id invàlid<br>";
                 }
 
+                // Si existe algún error saldrá un mensaje de color rojo y los datos no se envia
                 if(error != ""){
                     document.getElementById("error").innerHTML = error;
-                    return false; 
+                    return false; // Al devolver false, el formulario NO se envía
                 }
 
-                return true; 
+                return true; // Al devolver true, el formulario se envía al PHP 
             }
             </script>
         </div>
@@ -99,30 +104,32 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
                 <th>Data</th>
                 <th>Descripció</th>
             </tr>
-            
+            <!--Comprueba si el id es válido y
+             si la lista '$actuacions' contiene al menos una fila guardada (> 0)-->
             <?php if ($id && count($actuacions) > 0): ?>
+                
+                    // Recorre fila por fila y los datos de la fila se guardan en la variable '$a'.
                     <?php foreach ($actuacions as $a): ?>
-                    <?php if ($a['visible'] == 1) { ?>
-                            <tr>
-                                <td><?= $a['data_actuacio'] ?></td>
-                                <td><?= htmlspecialchars($a['descripcio']) ?></td>
-                            </tr> 
+                        <?php if ($a['visible'] == 1) { ?>
+                                <tr>
+                                    <td><?= $a['data_actuacio'] ?></td>
+                                    <td><?= htmlspecialchars($a['descripcio']) ?></td>
+                                </tr> 
                         <?php
-                        }?>
-                        
+                        }
+                        ?>
                     <?php endforeach; ?>
+            // Si al buscar el ID, la lista estaba vacía se mostrará un mensaje
             <?php elseif ($id): ?>
                 <tr>
                     <td colspan="3">No hi ha actuacions visibles</td>
                 </tr>
             <?php endif; ?>
-
         </table>
-
         <br>
-        <div style="text-align: left;">
-            <a class="btn btn-primary" href="usuari.php" >Sortir</a>
-        </div>
+            <div style="text-align: left;">
+                <a class="btn btn-primary" href="usuari.php" >Sortir</a>
+            </div>
         <br>
     </fieldset>
  </div>    

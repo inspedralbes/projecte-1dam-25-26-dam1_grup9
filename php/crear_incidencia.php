@@ -2,22 +2,27 @@
 require_once "connexion.php";
 require_once "logger.php";
 
+// Función para guardar la incidencia en la base de datos
+function crear_incidencia($conn){
 
-function crear_incidencia($conn)
-{
+    // Recogemos los datos puesto en el formulario. Si no existen, quedan vacíos
     $departamento = $_POST['departament_id'];
     $descripcion = $_POST['descripcio'];
-    $data= date('Y-m-d H:i:s');
+    $data= date('Y-m-d H:i:s'); // Guardamos también la fecha y hora actual de la creación de la incidencia
 
+     // ERROR: si no pone el departamento o la descripción se muestra un error y detiene el proceso
     if (empty($departamento) || empty($descripcion)) {
         echo "<p style='color:red;text-align:center;'>Error: camps buits</p>";
         return;
     }
 
+    // Preparamos la consulta 
     $sql = "INSERT INTO incidencies (departament_id, descripcio, data_obertura) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
+    // Enlazamos los parametros  ("iss" = sencer, text, text)
     $stmt->bind_param("iss", $departamento, $descripcion, $data);
 
+    // Si la bbdd acepta los datos correctamente, muestra un mensaje
     if ($stmt->execute()) :?>
         <div class="mensaje">
            <h1>Incidència creada correctament</h1>
@@ -25,9 +30,9 @@ function crear_incidencia($conn)
             <p><a href='index.php' class="btn btn-primary">Salir</a></p> 
         </div>
          
-        <?php endif;
+    <?php endif;
 
-        $stmt->close();
+    $stmt->close(); // Cerramos la consulta
 }
 ?>
 
@@ -76,12 +81,12 @@ function crear_incidencia($conn)
 
 <div>
 <?php
+    // Al ùlsar el botón de enviar (POST), procesamos los datos
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        crear_incidencia($conn);
 
-    crear_incidencia($conn);
-
-} else {
+    } else {
 ?>
     <header>
         <h1>Registrar nova incidència</h1>
@@ -112,14 +117,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a href="usuari.php" class="btn btn-primary">Inicio</a>
         <button  type="submit" class="btn btn-success" >Enviar incidència</button>
         
-        
         </form>
 <?php
 }
 ?>
 
     <script>
-
+        // Función de JavaScript para comprobar que los campos no estén vacíos
+        //( si esta vacio muestra un mensaje de error) antes de enviar a PHP
         function validarForm(){
 
             let dept = document.getElementById("departament_id").value;
@@ -127,21 +132,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             let error = "";
 
+            // Si no ha elegido ningún departamento de la lista
             if(dept == ""){
                 error += "Has de seleccionar un departament<br>";
             }
 
+            // Si la descripción tiene menos de 5 letras 
             if(desc.trim().length < 5){
                 error += "La descripció és massa curta o no hi ha cap descripció<br>";
             }
 
-        
+            // Si existe algún error saldrá un mensaje de color rojo y los datos no se envia
             if(error != ""){
                 document.getElementById("error").innerHTML = error;
-                return false; 
+                return false;  // Al devolver false, el formulario NO se envía
             }
 
-            return true; 
+            return true; // Al devolver true, el formulario se envía al PHP 
         }
 
     </script>

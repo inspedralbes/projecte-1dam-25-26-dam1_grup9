@@ -4,7 +4,10 @@ session_start();
 require_once "connexion.php";
 include_once "logger.php";
 
+//El código de opciones te envía el ID por URL (GET), 
+// pero esta línea comprueba de forma obligatoria si el ID está guardado en la SESIÓN ($_SESSION).
 if (!isset($_SESSION['tecnic_id'])) {
+     // Si no se encuentra en la sesión, te echa y te manda al selector de técnicos
     header("Location: elegir_tecnico.php");
     exit();
 }
