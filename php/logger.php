@@ -12,14 +12,13 @@ $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
 
 $host = $_SERVER['HTTP_HOST']; //obté el domini
 $uri = $_SERVER['REQUEST_URI']; //obté l'URI
-$url = $protocol . "://" .$host . $uri; //Construeix l'URL completa
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown'; //Obté la IP de l'usuari
 $hora = date("Y-m-d");
 $method = $_SERVER['REQUEST_METHOD']; //Obté el metode que està fent l'usuari
 
 
 $resultat = $collection->insertOne([
-    'URL' => $url,
+    'URL' => $uri,
     'name' => 'Anonim',
     'Metode' => $method,
     'ip_origin' => $ip,
