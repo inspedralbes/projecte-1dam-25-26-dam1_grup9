@@ -2,25 +2,27 @@
 require_once "connexion.php";
 require_once "logger.php";
 
-
+// Obtenemos el id que teniamos antes 
+// Si no existe se le asignará el valor null por defecto usando el operador ??
 $id = $_GET['id'] ?? null;
 
-
+// Si no hay un id se mostrara un mensaje de error
 if (!$id) {
     die("No s'ha especificat cap incidència.");
 }
-
+// Si se ha pulsado el botón de "guardar" haz esto
 if (isset($_POST['guardar'])) {
-
+    // Se recoge los datos que se escribió en el formulario
     $tecnic = $_POST['tecnic'];
     $prioritat = $_POST['prioritat'];
     $tipus = $_POST['tipus'];
-
+    //Le pide que actualize los valores 
     $stmt = $conn->prepare(" UPDATE incidencies
         SET tecnic_id = ?, prioritat = ?, tipus = ?
         WHERE id = ?
     ");
-
+     // Ejecuta la consulta pasando las variables en orden dentro de un array y si lo hace bien muestre un mensaje de correcto
+    // y tambien un boton para salir
     if ($stmt->execute([$tecnic, $prioritat, $tipus, $id])) :?>
         <div style="margin-top: 25%; color: green; text-align: center;font-family: Arial;">
            <h1>Dades actualitzades correctament</h1>
@@ -35,15 +37,22 @@ if (isset($_POST['guardar'])) {
     
 }
 
-
+// Pide a la bbdds el id y el nombre de todos los técnicos, ordenando alfabeticamnete
 $res_tec = $conn->query("SELECT id, nom FROM tecnics ORDER BY nom ASC");
+// el resultado lo guarda en la variable $tecnics 
+// en forma de lista ordenada 
 $tecnics = $res_tec->fetch_all(MYSQLI_ASSOC);
 
-
+// Consulta para buscar todos los datos de una incidencia. 
+//El signo "?" es para poner despues el id que queremos buscar.
 $stmt = $conn->prepare("SELECT * FROM incidencies WHERE id = ?");
+// asegurándose de que se trate estrictamente como un número entero ("i").
 $stmt->bind_param("i", $id);
 $stmt->execute();
+
+// Recoge los datos que se ha devuelto de la bbdd tras la búsqueda.
 $res_inc = $stmt->get_result();
+// saca la única fila de ese id y la guarda en $inc 
 $inc = $res_inc->fetch_assoc();
 
 
