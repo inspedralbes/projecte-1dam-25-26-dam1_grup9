@@ -88,7 +88,7 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
              si la lista '$actuacions' contiene al menos una fila guardada (> 0)-->
             <?php if ($id && count($actuacions) > 0): ?>
                 
-                    // Recorre fila por fila y los datos de la fila se guardan en la variable '$a'.
+                    <!-- Recorre fila por fila y los datos de la fila se guardan en la variable '$a'.-->
                     <?php foreach ($actuacions as $a): ?>
                         <?php if ($a['visible'] == 1) { ?>
                                 <tr>
@@ -99,7 +99,7 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
                         }
                         ?>
                     <?php endforeach; ?>
-            // Si al buscar el ID, la lista estaba vacía se mostrará un mensaje
+            <!-- Si al buscar el ID, la lista estaba vacía se mostrará un mensaje-->
             <?php elseif ($id): ?>
                 <tr>
                     <td colspan="3">No hi ha actuacions visibles</td>

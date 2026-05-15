@@ -72,12 +72,12 @@ while ($fila = $resultat->fetch_assoc()) {
         <h2>Historial d'actuacions</h2>
 
             <?php if (count($tecnics) > 0): ?>  
-                //En cada array de tecnico guarda su nombre y dentro guardas la lista de incidencia 
+                <!--En cada array de tecnico guarda su nombre y dentro guardas la lista de incidencia -->
                 <?php foreach ($tecnics as $nom => $incidencies): ?>
                  <h3>Tècnic assignat:  <span style="color: blue;"><?= htmlspecialchars((string)$nom) ?></span></h3>
                     
                     <fieldset>
-                        // Cada incidencia guardame sus valores 
+                        <!-- Cada incidencia guardame sus valores -->
                         <?php foreach ($incidencies as $i): ?>
                         <h3>Incidència ID: <?= htmlspecialchars((string)$i['id']) ?></h3>
                             <table>
@@ -88,7 +88,7 @@ while ($fila = $resultat->fetch_assoc()) {
                                     <th>Visible</th>
                                     <th>Data de la finalització </th>
                                 </tr>
-                                //Guarda dentro de cada incidencia sus actuaciones y si no hay pon un mensaje
+                                <!--Guarda dentro de cada incidencia sus actuaciones y si no hay pon un mensaje-->
                                 <?php foreach ($i['actuacions'] as $a): ?>
                                     <tr>
                                         <td><?php if ($a['data_actuacio']): ?>

@@ -70,77 +70,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
 <head>
 <meta charset="UTF-8">
 <title>Registrar actuació</title>
-
-<style>
-    header {
-                background: linear-gradient(to right, #23e2c2, #6a8bf0);
-                color: white;
-                padding: 20px;
-                font-family: Arial;
-                text-align: center;
-    }
-    body {
-        font-family: Arial;
-    
-    }
-
-    table {
-        width: 95%;
-        border-collapse: collapse;
-    }
-
-    th, td {
-        border: 1px solid black;
-        padding: 8px;
-    }
-
-    th {
-        background: #8270e7;
-        color : white;
-    }
-    input{
-        padding: 8px;  
-        border: 1px solid #000000;
-    }
-
-    textarea {
-        width: 150%;
-        padding: 10px;
-        height: 50px;
-        margin: 10px 0px;
-        border: 1px solid #000000;
-    }
-
-    .botones {
-        padding: 10px 15px;
-        background: #8270e7;
-        border: none;
-        cursor: pointer;
-        text-decoration: none;
-        color: white;
-        border-radius: 5px;
-    }
-
-    .botones:hover {
-        background: #a27ee7;
-    }
-    fieldset {
-        margin: 20px;
-        padding: 20px ;
-        border: 2px solid #000000;
-        border-radius: 5px;
-        
-    }
-    .uno{
-        display: flex;
-        
-    }
-    button {
-        font-family: Arial;
-        font-size: 16px;
-    }
-
-</style>
+<link rel="stylesheet" href="css/registrar.css">
 </head>
 
 <body>
