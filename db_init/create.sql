@@ -91,12 +91,12 @@ INSERT INTO tecnics (nom) VALUES ('Tècnic 5');
 
 
     insert into incidencies (departament_id, data_obertura, descripcio, tecnic_id, prioritat, resolta, data_tancament, tipus)
-    values (1, '2024-01-15 10:00:00', 'Problema amb el projector de la sala de conferències', 1, 'Alta', 0, NULL, 'Hardware');
+    values (1, '2026-01-15 10:00:00', 'Problema amb el projector de la sala de conferències', 1, 'Alta', 0, NULL, 'Hardware');
     insert into incidencies (departament_id, data_obertura, descripcio, tecnic_id, prioritat, resolta, data_tancament, tipus)
-    values (2, '2024-01-16 14:30:00', 'El programari de gestió de notes no funciona correctament', 2, 'Mitja', 0, NULL, 'Software');
+    values (2, '2026-01-16 14:30:00', 'El programari de gestió de notes no funciona correctament', 2, 'Mitja', 0, NULL, 'Software');
     insert into incidencies (departament_id, data_obertura, descripcio, tecnic_id, prioritat, resolta, data_tancament, tipus)
-    values (3, '2024-01-17 09:15:00', 'Problema de connexió a la xarxa Wi-Fi del departament', 3, 'Baixa', 0, NULL, 'Xarxa');
+    values (3, '2026-01-17 09:15:00', 'Problema de connexió a la xarxa Wi-Fi del departament', 3, 'Baixa', 0, NULL, 'Xarxa');
     insert into incidencies (departament_id, data_obertura, descripcio, tecnic_id, prioritat, resolta, data_tancament, tipus)
-    values (4, '2024-01-18 11:45:00', 'El sistema de videoconferència no funciona', 4, 'Alta', 0, NULL, 'Hardware');
+    values (4, '2026-01-18 11:45:00', 'El sistema de videoconferència no funciona', 4, 'Alta', 0, NULL, 'Hardware');
     insert into incidencies (departament_id, data_obertura, descripcio, tecnic_id, prioritat, resolta, data_tancament, tipus)
-    values (5, '2024-01-19 13:20:00', 'Problema amb el sistema de correu electrònic del departament', 5, 'Mitja', 0, NULL, 'Software');
+    values (5, '2026-01-19 13:20:00', 'Problema amb el sistema de correu electrònic del departament', 5, 'Mitja', 0, NULL, 'Software');
