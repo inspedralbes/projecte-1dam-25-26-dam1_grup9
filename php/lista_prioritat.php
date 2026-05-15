@@ -34,60 +34,7 @@ if (mysqli_query($conn, $sql)) {
 <head>
     <meta charset="UTF-8">
     <title>Incidències no resoltes</title>
-
-    <style>
-        header {
-            background: linear-gradient(to right, #23e2c2, #6a8bf0);
-            color: white;
-            padding: 20px;
-            font-family: Arial;
-            text-align: center;
-        }
-        table {
-            border-collapse: collapse;
-            width: 90%;
-            margin: auto;
-        }
-
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            font-family: Arial;
-            text-align: center;
-        }
-
-        th {
-            background-color: #2b5de7;
-            color: white;
-            font-family: Arial;
-        }
-
-        .botones {
-            padding: 6px 12px;
-            background: #2c51f1;
-            text-decoration: none;
-            color: white;
-            border-radius: 5px;
-        }
-
-        .botones:hover {
-            background: #54a7df;
-            
-        }
-
-        .inicio {
-            text-decoration: none;
-            padding: 10px 20px;
-            background-color: #2d59e9;
-            border: none;
-            color: white;
-            font-family: Arial;
-        }
-
-        .inicio:hover {
-            background-color: #55a5da;
-        }
-    </style>
+ <link rel="stylesheet" href="css/lista_prioritat.css">
 </head>
 
 <body>

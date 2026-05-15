@@ -62,34 +62,8 @@ $inc = $res_inc->fetch_assoc();
 <html>
 <head>
     <meta charset="UTF-8">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">          
-    <style>
-        body{
-            font-family:arial;
-        }
-        header {
-                background: linear-gradient(to right, #23e2c2, #6a8bf0);
-                color: white;
-                padding: 20px;
-                text-align: center;
-        }
-        select{
-            padding: 5px 10px;
-        }
-         button {
-            padding: 8px;
-            margin: 10px;
-            width: 25%;
-        }
-        fieldset{
-            border: 2px solid black;
-            margin: 20px auto;
-            width: 50%;
-            padding: 2px 15px;
-            border-radius: 5px;
-        
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">          
+    <link rel="stylesheet" href="css/editar_actuacio.css">
 </head>
 
 <body>

@@ -37,49 +37,8 @@ $numArray = array();
 <head>
 <meta charset="UTF-8">
 <title>Consum per Departaments</title>
+<link rel="stylesheet" href="css/consumo.css">
 
-<style>
-    header {
-        text-align: center;
-        padding: 10px 20px;
-        background: linear-gradient(90deg, #4b6cb7, #182848);
-        color: white;
-        font-size : 24px;
-    }
-    body {
-    font-family: Arial;
-               
-    }
-    table {
-        margin: auto;
-        width: 90%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        
-    }
-
-    th, td {
-        border: 1px solid black;
-        padding: 10px;
-    }
-
-    th {
-        background: #2d63d8;
-        color: white;
-    }
-    .inicio {
-            text-decoration: none;
-            padding: 10px 20px;
-            background-color: #6f71eb;
-            border: none;
-            color: white;
-            border-radius: 5px;
-        }
-
-        .inicio:hover {
-            background-color: #285ed3;
-        }
-</style>
 </head>
 
 <body>

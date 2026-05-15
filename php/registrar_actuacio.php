@@ -219,7 +219,7 @@ $actuacions = $resultat->fetch_all(MYSQLI_ASSOC);
             <h4 id="error" style="color:red;"></h4>
         
         </form>
-       
+        
         <script>
             function validarForm(){
                 //coge la fecha de la creación de la incidencia y la fecha de finalizacio que se puso

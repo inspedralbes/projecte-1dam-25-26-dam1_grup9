@@ -41,52 +41,8 @@ foreach ($data as $row) {
 <head>
 <meta charset="UTF-8">
 <title>Informe de Tècnics</title>
+<link rel="stylesheet" href="css/informe.css">
 
-<style>
-    header {
-        text-align: center;
-        padding: 10px 20px;
-        background: linear-gradient(90deg, #4b6cb7, #182848);
-        color: white;
-        font-size : 24px;
-    }
-    h3 {
-        margin-top: 30px;
-        font-family: Arial;
-    }
-
-    table { 
-        width: 90%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-        margin: 20px
-    }
-
-    th, td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: center;
-        font-family: Arial;
-    }
-
-    th {
-        background: #7779f0;
-        color: white;
-        font-family: Arial;
-    }
-    .botones {
-        padding: 10px 20px;
-        background-color: #2d59e9;
-        text-decoration: none;
-        color: white;
-        font-family: Arial;
-        
-    }
-    .botones:hover {
-        background-color: #55a5da;
-    }
-
-</style>
 </head>
 
 <body>

@@ -5,31 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Opciones</title>
-    <style>
-        body {
-            text-align: center;
-            height: 100vh;
-            font-family: Arial;
-            background: linear-gradient(135deg, #0648c4be, #25117e);
-            color: black;
-            padding: 15px 35px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 10px;
-            margin-top: 15%;
-            
-        }
-        fieldset{
-            border: 2px solid black;
-            margin: 20px auto;
-            width: 50%;
-            padding: 30px 15px 50px 10px;
-            border-radius: 5px;
-            background: white
-        }
-      
-    
-    </style>
+    <link rel="stylesheet" href="css/elegir_tecnico.css">
 </head>
 <body >
 <div>

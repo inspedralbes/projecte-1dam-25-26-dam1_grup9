@@ -39,52 +39,7 @@ if ($result) {
 <head>
     <meta charset="UTF-8">
     <title>Incidències no resoltes</title>
-
-    <style>
-        header {
-            background: linear-gradient(to right, #23e2c2, #6a8bf0);
-            color: white;
-            padding: 20px;
-        }
-        body {
-            font-family: Arial;
-            text-align: center;
-        }
-
-
-        table {
-            margin: auto;
-            border-collapse: collapse;
-            width: 90%;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-        }
-
-        th {
-            background-color: #4764e6;
-            color:white;
-        }
-
-        .botones {
-            padding: 8px 17px;
-            background: #389bec;
-            text-decoration: none;
-            color: black;
-            border-radius: 5px;
-        }
-
-        .botones:hover {
-            background: #80b2f3;
-        }
-
-        h2 {
-            margin-bottom: 10px;
-        }
-    </style>
+ <link rel="stylesheet" href="css/lista_actuacio.css">
 </head>
 
 <body>

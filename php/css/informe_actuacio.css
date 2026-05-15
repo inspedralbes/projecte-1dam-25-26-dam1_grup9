@@ -1,0 +1,54 @@
+
+    header {
+                background: linear-gradient(to right, #23e2c2, #6a8bf0);
+                color: white;
+                padding: 20px;
+                font-family: Arial;
+                text-align: center;
+    }
+    body {
+        font-family: Arial;
+    
+    }
+
+    table {
+        width: 95%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    th {
+        background: #8270e7;
+        color : white;
+    }
+    input{
+        padding: 8px;  
+        border: 1px solid #000000;
+    }
+
+    .botones {
+        padding: 10px 15px;
+        background: #8270e7;
+        border: none;
+        text-decoration: none;
+        color: white;
+        border-radius: 5px;
+        margin: 10px 20px;
+    }
+
+    .botones:hover {
+        background: #a27ee7;
+    }
+    fieldset {
+        margin: 20px;
+        padding: 20px ;
+        border: 2px solid #000000;
+        border-radius: 5px;
+        
+    }
+    
+
