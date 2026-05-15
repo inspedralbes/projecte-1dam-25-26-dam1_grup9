@@ -20,7 +20,7 @@ $id_seleccionat = $_SESSION['tecnic_id'];
 // Consulta las incidencia con su departamento correspondiente y que sea una incidencia no resuleta
 // donde ademas debe solo verse para el tecnico al que fue asigando (la que entro a la pagina)
 // 'intval()' es una función de seguridad que transforma cualquier texto en un número entero
-$sql = "SELECT * FROM incidencies i 
+$sql = "SELECT  i.*, i.id AS incidencia_id, d.departament_nom AS nom  FROM incidencies i 
         JOIN departament d ON d.id = i.departament_id 
         WHERE i.resolta = 0 
         AND i.tecnic_id =  " . intval($id_seleccionat);
@@ -62,8 +62,8 @@ if ($result) {
         <?php if (count($incidencies) > 0): ?>
             <?php foreach ($incidencies as $i): ?>
                 <tr>
-                    <td><?= $i['id'] ?></td>
-                    <td><?= htmlspecialchars($i['departament_nom']) ?></td>
+                    <td><?= $i['incidencia_id'] ?></td>
+                    <td><?= htmlspecialchars($i['nom']) ?></td>
                     <td><?= $i['data_obertura'] ?></td>
                     <td><?= $i['prioritat'] ? $i['prioritat'] : '-' ?></td>
                     <td>

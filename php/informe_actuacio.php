@@ -10,8 +10,8 @@ $sql = " SELECT
         a.temps, 
         a.visible
     FROM incidencies i
-    LEFT JOIN actuacions a ON i.id = a.incidencia_id
     LEFT JOIN tecnics t ON i.tecnic_id = t.id
+    LEFT JOIN actuacions a ON i.id = a.incidencia_id
     ORDER BY nom ASC, i.id DESC, a.data_actuacio ASC
 ";
 
