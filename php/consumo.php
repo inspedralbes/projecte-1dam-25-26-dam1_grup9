@@ -2,6 +2,8 @@
 require_once "connexion.php";
 include_once "logger.php";
 
+// Consulta el id del departamento, nombre del departamento, número total de incidencias de ese departamento
+// y tiempo total invertido en actuaciones relacionadas a ese departamento
 $sql = ("SELECT DISTINCT i.departament_id, d.departament_nom AS departament_nom, (SELECT COUNT(*) FROM incidencies i2 WHERE i2.departament_id = i.departament_id) AS num_incidencies,
 (SELECT COALESCE(SUM(a.temps),0) FROM actuacions a
 JOIN incidencies i3 ON i3.id = a.incidencia_id WHERE i3.departament_id = i.departament_id) AS temps_total
@@ -9,9 +11,10 @@ FROM incidencies i
 JOIN departament d ON d.id = i.departament_id
 ORDER BY i.departament_id
 ");
-
+//ejecuta la consulta sql
 $resultat = $conn->query($sql);
 
+//si la cinsulta no funciona mostrara un mensaje de error
 if ($resultat) {
     $data = $resultat->fetch_all(MYSQLI_ASSOC);
 } else {
@@ -20,9 +23,12 @@ if ($resultat) {
 
 $departaments = $resultat->fetch_all(MYSQLI_ASSOC);
 
+//guardar tiempo 
 $tempsArray = array();
+//guardar departamento
 $deptArray = array();
-
+// Guardará número incidencias
+$numArray = array();
 ?>
 
 
@@ -122,9 +128,11 @@ $deptArray = array();
             new Chart (ctx, {
                 type: 'pie',
                 data: {
+                    //etiquetas departamento
                     labels: <?php echo json_encode($deptArray); ?>,
                     datasets: [{
                         label: 'Temps total (min)',
+                        // Valores 
                         data: <?php echo json_encode($tempsArray); ?>,
                         borderWidth: 1
                     }]
@@ -132,6 +140,7 @@ $deptArray = array();
                 options: {
                     plugins: {
                         title: {
+                            //titulo del grafico
                             display: true,
                             text: 'Consum de Temps Total per Departaments'
                         }
@@ -157,9 +166,11 @@ $deptArray = array();
             new Chart (ctx2, {
                 type: 'pie',
                 data: {
+                    // Etiquetas departamentos
                     labels: <?php echo json_encode($deptArray); ?>,
-                    datasets: [{
+                    datasets: [{ 
                         label: 'Nombre d\'incidències totals',
+                        // Valores incidencias
                         data: <?php echo json_encode($numArray); ?>,
                         borderWidth: 1
                     }]
@@ -174,6 +185,7 @@ $deptArray = array();
 
                     },
                     plugins: {
+                        //titulo del grafico
                         title: {
                             display: true,
                             text: 'Nombre d\'incidències totals per Departament'
