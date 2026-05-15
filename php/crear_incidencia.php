@@ -122,7 +122,7 @@ function crear_incidencia($conn){
 }
 ?>
     </fieldset>
-    <script src="/js/crear.js"></script>
+    <script src="js/crear.js"></script>
 </div>
 
 </body>

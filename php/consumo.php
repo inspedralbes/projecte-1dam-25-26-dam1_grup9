@@ -14,7 +14,7 @@ ORDER BY i.departament_id
 //ejecuta la consulta sql
 $resultat = $conn->query($sql);
 
-//si la cinsulta no funciona mostrara un mensaje de error
+//si la consulta no funciona mostrara un mensaje de error
 if ($resultat) {
     $data = $resultat->fetch_all(MYSQLI_ASSOC);
 } else {

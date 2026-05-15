@@ -73,7 +73,7 @@ $actuacions = $result->fetch_all(MYSQLI_ASSOC);
                 <button class="btn btn-primary" type="submit" >Buscar</button>
                 <h4 id="error" style="color:red;"></h4>
             </form>
-            <script src="/js/estado.js"></script>
+            <script src="js/estado.js"></script>
             
         </div>
 
