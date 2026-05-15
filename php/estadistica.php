@@ -12,7 +12,7 @@ $pagines = $collection->aggregate( [
 
     [
         '$group' => [
-            '_id' => '$URL',
+            '_id' => ['$arrayElemAt' => [ ['$split' => ['$URL', '?']], 0 ]],
             'total' => [ '$sum' => 1],
         ]
     ],
@@ -247,6 +247,7 @@ foreach ($resultat as $fila) {
         margin-left: 12%;
         float: left;
         width: 320px;
+        height: 120px;
         background: #ececec;
         padding: 20px;
         border-radius: 8px;
