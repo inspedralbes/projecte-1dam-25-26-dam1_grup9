@@ -1,4 +1,3 @@
-
     header {
         background: linear-gradient(to right, #23e2c2, #6a8bf0);
         color: white;
@@ -138,6 +137,7 @@
         margin-left: 12%;
         float: left;
         width: 320px;
+        height: 120px;
         background: #ececec;
         padding: 20px;
         border-radius: 8px;
