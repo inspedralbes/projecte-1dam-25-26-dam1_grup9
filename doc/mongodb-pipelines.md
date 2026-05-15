@@ -1,5 +1,5 @@
 # Documentació de pipelines
-En aquest document, és una informació sobre el les pipelines del fitxer `agregacio.php` que estan implementades per atacar a la base de dades de MongoDB.
+En aquest document, és una informació sobre el les pipelines del fitxer `estadistica.php` que estan implementades per atacar a la base de dades de MongoDB.
 
 Tot el codi que es mostrarà a continuació, estarà documentat linia per linia.
 
@@ -12,13 +12,13 @@ La funcionalitat d'aquesta pipeline, és poder **mostrar totes les URL que han a
 ```
     [
         '$group' => [
-            '_id' => '$URL',
+            '_id' => ['$arrayElemAt' => [ ['$split' => ['$URL', '?']], 0 ]],
             'total' => [ '$sum' => 1],
         ]
     ],
 ```
 
-Per implementar l'URL que ha accedir l'usuari, hem creat un pipeline on s'agrupa el link de la pàgina com l'ID principal. 
+Per implementar l'URL que ha accedir l'usuari, hem creat un pipeline on s'agrupa el link de la pàgina com l'ID principal. No obstant, només mostrarà un **UNIC** link. És a dir, quan un usuari accedeix el link per consultar una incidencia i busca per la seva ID, es crea una nou link on serà el mateix però s'afegeix el numero de l'ID i això incrementaria el llistat d'estadistica i només volem veure un unic link per cada apartat
 
 També hem creat una variable "total" que incrementa cada vegada que hi ha un document en la colecció.
 
@@ -32,13 +32,22 @@ Aqui ordenem la quantitat de documents que hi ha per URL de manera descendent.
 ```
 '$project' => [
             '_id' => 0,
-            'URL' => '$_id',
+            'URL' => [
+                '$concat' => [
+                    '/',
+                    [
+                        '$arrayElemAt' => [
+                            [ '$split' => ['$_id', '/'] ], -1
+                        ]
+                    ]
+                ]
+            ],
             'total' => 1
         ] 
 ```
-En la part de project, només mostrarem la URL que ha accedit l'usuari i la quantitat de vegades que s'ha accedit aquell link.
+En la part de project, només mostrarem el nom del fitxer juntament amb una ```/``` que ha accedit l'usuari i la quantitat de vegades que s'ha accedit aquell link.
 
-No obstant, no mostrarem l'ID del document.
+Però no mostrarem l'ID del document.
 
 ## Pipeline de data d'accés
 Amb aquesta pipeline, podrem veure la data que ha accedit l'usuari per cada URL.
