@@ -1,10 +1,10 @@
 <?php
 require 'vendor/autoload.php';
 
-$client = new MongoDB\Client("mongodb://root:example@mongo:27017");
-
-$collection = $client->local->user_log;
-
+$client = new MongoDB\Client("mongodb://root:example@mongo:27017"); //Esborrar linia en cas d'estar en producció
+// $client = new MongoDB\Client("mongodb+srv://a25marfajdel_db_user:ProjecteFinal_12345.@cluster0.hmpbtpj.mongodb.net/?appName=Cluster0"); //descomentar en cas d'estar en producció
+$collection = $client->local->user_log; //Esborrar linia en cas d'estar en producció
+//$collection = $client->accessos->accessos; //descomentar en cas d'estar en producció
 $totalaccess = $collection->countDocuments(); //Compta el total de documents
 
 
