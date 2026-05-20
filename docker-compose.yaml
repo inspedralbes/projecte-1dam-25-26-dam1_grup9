@@ -1,0 +1,68 @@
+services:
+  apache_php_mysql_mongodb:
+    #La imatge php:apache no té tots els drivers. hem de fer una imatge a mida
+    # Podeu fer servir el dockerfile que hi ha a /images i fer el build
+    # o podeu agafar aquest imatge, ebota/daw:apache_php_mysql_mongodb, 
+    #  que ja està construüida i està a dockerhub. Teniu més info a:
+    # https://hub.docker.com/r/ebota/daw
+    image: ebota/daw:apache_php_mysql_mongodb
+    ports:
+      - "8080:80"
+    volumes:
+      - ./php:/var/www/html
+    # És necessari que hi hagi el fitxer composer.json a la carpeta php i la següent directiva
+    # perque el php instal·li les dependències de mongo 
+    command: /bin/bash -c "composer install --no-interaction --no-plugins --no-scripts && echo WEBSERVER_________UP_________AND_______RUNNIIIIIIING && apache2-foreground"
+    depends_on:
+       - db
+
+  db:
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db_init:/docker-entrypoint-initdb.d
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: Incidencies
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: ProjecteFinal_12345.
+      LANG: C.UTF-8
+  
+  adminer:
+    image: adminer
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+
+  # BBDD no sql,
+  mongo:
+    image: mongo:latest
+    volumes:
+      #Named volume, no cal posar res al .gitignore
+      #perque no es crea una carpeta al host sinó que es crea un volum a docker
+      # i es pot veure amb docker volume ls
+      # i es pot eliminar amb docker volume rm nom_del_volum      
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8082:8081"
+    environment:
+      #Per entrar a la web de mongo-express, les credencials són
+      #admin
+      #pass
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+    depends_on:
+      - mongo
+
+volumes:
+  db_data:
+  mongodb_data:

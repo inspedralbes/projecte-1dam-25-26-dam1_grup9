@@ -1,0 +1,34 @@
+<?php include_once "logger.php"?>
+<?php include_once "header.php"; ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Opciones</title>
+    <link rel="stylesheet" href="css/elegir_tecnico.css">
+</head>
+<body >
+<div>
+    <fieldset>
+         <div class="mb-3">
+        <form method="get" action="tecnico.php"> 
+        <label class="form-label">Selecciona el teu nom: </label><br>
+            <select class="form-select" name="tecnic_id" id="tecnic_id" >
+                <option value="">Seleccionar tècnic</option>
+                <option value="1">Tècnic 1</option>
+                <option value="2">Tècnic 2</option>
+                <option value="3">Tècnic 3</option>
+                <option value="4">Tècnic 4</option>
+                <option value="5">Tècnic 5</option>
+            </select>
+        <br>
+        </div>
+        <button type="submit" class="btn btn-success"><b>Iniciar Secció</b></button>
+            
+    </fieldset>
+    <a href="usuari.php" class="btn btn-secondary"><b>Salir</b></a>
+   
+</div>
+
+</body>
+</html>
